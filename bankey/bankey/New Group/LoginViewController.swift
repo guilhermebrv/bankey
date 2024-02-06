@@ -1,0 +1,73 @@
+//
+//  LoginViewController.swift
+//  bankey
+//
+//  Created by Guilherme Viana on 06/02/2024.
+//
+
+import UIKit
+
+class LoginViewController: UIViewController {
+	private let loginView: LoginView = LoginView()
+	
+	override func loadView() {
+		view = loginView
+	}
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		signProtocols()
+	}
+}
+
+extension LoginViewController {
+	private func signProtocols() {
+		loginView.delegate(delegate: self)
+		loginView.usernameTextField.delegate = self
+		loginView.passwordTextField.delegate = self
+	}
+}
+
+extension LoginViewController: UITextFieldDelegate {
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textField.endEditing(true)
+		return true
+	}
+	
+	func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+		return true
+	}
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		//
+	}
+}
+
+extension LoginViewController: LoginViewProtocol {
+	func signInTapped() {
+		login()
+	}
+	
+	private func login() {
+		guard let username = loginView.usernameTextField.text, let password = loginView.passwordTextField.text else {
+			assertionFailure("Username or password should never be nil")
+			return
+		}
+		
+		if username.isEmpty || password.isEmpty {
+			showMessage(message: "Username / Password should not be empty")
+			return
+		}
+		
+		if username == "Guilherme" && password == "123" {
+			loginView.loginButton.configuration?.showsActivityIndicator = true
+		} else {
+			showMessage(message: "Username / Password is incorrect")
+		}
+	}
+	
+	private func showMessage(message: String) {
+		loginView.errorMessageLabel.text = message
+		loginView.errorMessageLabel.isHidden = false
+	}
+}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BBD97CA2B739CC200D65FCA /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD97C92B739CC100D65FCA /* OnboardingContainerViewController.swift */; };
 		2BC02B4F2B7240CF00D0B61E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC02B4E2B7240CF00D0B61E /* AppDelegate.swift */; };
 		2BC02B532B7240CF00D0B61E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC02B522B7240CF00D0B61E /* LoginViewController.swift */; };
 		2BC02B582B7240D400D0B61E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BC02B572B7240D400D0B61E /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2BBD97C92B739CC100D65FCA /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		2BC02B4B2B7240CF00D0B61E /* bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BC02B4E2B7240CF00D0B61E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BC02B522B7240CF00D0B61E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BBD97C82B739C9600D65FCA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2BBD97C92B739CC100D65FCA /* OnboardingContainerViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		2BC02B422B7240CF00D0B61E = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				2BC02B642B72465100D0B61E /* Supporting */,
+				2BBD97C82B739C9600D65FCA /* Onboarding */,
 				2BC02B622B72458100D0B61E /* Login */,
 			);
 			path = bankey;
@@ -154,6 +165,7 @@
 				2BC02B662B7246CC00D0B61E /* LoginView.swift in Sources */,
 				2BC02B532B7240CF00D0B61E /* LoginViewController.swift in Sources */,
 				2BC02B4F2B7240CF00D0B61E /* AppDelegate.swift in Sources */,
+				2BBD97CA2B739CC200D65FCA /* OnboardingContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import UIKit
 extension UIViewController {
 	func setStatusBar() {
 		let navBarAppearance = UINavigationBarAppearance()
-		navBarAppearance.configureWithTransparentBackground() // to hide Navigation Bar Line also
+		navBarAppearance.configureWithTransparentBackground()
 		navBarAppearance.backgroundColor = .appColor
 		UINavigationBar.appearance().standardAppearance = navBarAppearance
 		UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance

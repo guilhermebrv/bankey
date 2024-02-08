@@ -16,7 +16,6 @@ public class LocalState {
 		}
 		set(newValue) {
 			UserDefaults.standard.set(newValue, forKey: "hasOnboarded")
-			UserDefaults.standard.synchronize()
 		}
 	}
 }

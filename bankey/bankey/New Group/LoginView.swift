@@ -12,10 +12,7 @@ protocol LoginViewProtocol: AnyObject {
 }
 
 class LoginView: UIView {
-	private weak var delegate: LoginViewProtocol?
-	public func delegate(delegate: LoginViewProtocol) {
-		self.delegate = delegate
-	}
+	weak var delegate: LoginViewProtocol?
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)

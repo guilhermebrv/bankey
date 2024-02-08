@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject {
+	func didLogin()
+}
+
 class LoginViewController: UIViewController {
 	private let loginView: LoginView = LoginView()
+	weak var delegate: LoginViewControllerDelegate?
 	
 	override func loadView() {
 		view = loginView
@@ -18,11 +23,19 @@ class LoginViewController: UIViewController {
 		super.viewDidLoad()
 		signProtocols()
 	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		loginView.usernameTextField.text = ""
+		loginView.passwordTextField.text = ""
+		loginView.loginButton.configuration?.showsActivityIndicator = false
+		loginView.errorMessageLabel.text = ""
+	}
 }
 
 extension LoginViewController {
 	private func signProtocols() {
-		loginView.delegate(delegate: self)
+		loginView.delegate = self
 		loginView.usernameTextField.delegate = self
 		loginView.passwordTextField.delegate = self
 	}
@@ -39,7 +52,6 @@ extension LoginViewController: UITextFieldDelegate {
 	}
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
-		//
 	}
 }
 
@@ -61,6 +73,7 @@ extension LoginViewController: LoginViewProtocol {
 		
 		if username == "Guilherme" && password == "123" {
 			loginView.loginButton.configuration?.showsActivityIndicator = true
+			delegate?.didLogin()
 		} else {
 			showMessage(message: "Username / Password is incorrect")
 		}

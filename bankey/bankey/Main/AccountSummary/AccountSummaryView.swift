@@ -24,7 +24,6 @@ class AccountSummaryView: UIView {
 		table.translatesAutoresizingMaskIntoConstraints = false
 		table.showsVerticalScrollIndicator = false
 		table.separatorStyle = .none
-		table.backgroundColor = .systemBlue
 //		table.register(ProductsTableViewCell.self, forCellReuseIdentifier: ProductsTableViewCell.identifier)
 		return table
 	}()

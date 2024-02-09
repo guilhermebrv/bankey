@@ -17,9 +17,16 @@ class AccountSummaryViewController: UIViewController {
 		view = accountSummaryView
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.isNavigationBarHidden = true
+		view.safeAreaLayoutGuide.owningView?.backgroundColor = .appColor
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		signProtocols()
+		setupHeaderTableView()
     }
 }
 
@@ -27,6 +34,15 @@ extension AccountSummaryViewController {
 	private func signProtocols() {
 		accountSummaryView?.tableView.delegate = self
 		accountSummaryView?.tableView.dataSource = self
+	}
+	private func setupHeaderTableView() {
+		let header = AccountSummaryHeaderView(frame: .zero)
+		
+		var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+		size.width = UIScreen.main.bounds.width
+		header.frame.size = size
+		
+		accountSummaryView?.tableView.tableHeaderView = header
 	}
 }
 

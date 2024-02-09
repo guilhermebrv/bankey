@@ -23,8 +23,8 @@ class AccountSummaryView: UIView {
 		let table = UITableView()
 		table.translatesAutoresizingMaskIntoConstraints = false
 		table.showsVerticalScrollIndicator = false
-		table.separatorStyle = .none
-//		table.register(ProductsTableViewCell.self, forCellReuseIdentifier: ProductsTableViewCell.identifier)
+		table.register(AccountSummaryTableViewCell.self, forCellReuseIdentifier: AccountSummaryTableViewCell.identifier)
+		table.tableFooterView = UIView()
 		return table
 	}()
 }

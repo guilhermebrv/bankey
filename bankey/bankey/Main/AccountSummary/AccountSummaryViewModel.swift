@@ -16,7 +16,7 @@ class AccountSummaryViewModel {
 	}
 	
 	public var heightForRowAt: CGFloat {
-		return 50
+		return 80
 	}
 	
 }

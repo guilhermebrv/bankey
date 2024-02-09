@@ -12,6 +12,15 @@
 		2B2355DB2B74FECC00AC9356 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355DA2B74FECC00AC9356 /* LocalState.swift */; };
 		2B2355DD2B75462900AC9356 /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355DC2B75462900AC9356 /* Extension + UIViewController.swift */; };
 		2B2355DF2B754A0700AC9356 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355DE2B754A0700AC9356 /* MainViewController.swift */; };
+		2B57F0042B762FAB008D0F5A /* AccountSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F0032B762FAB008D0F5A /* AccountSummaryViewController.swift */; };
+		2B57F0062B762FCE008D0F5A /* MoveMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F0052B762FCE008D0F5A /* MoveMoneyViewController.swift */; };
+		2B57F0082B762FEA008D0F5A /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F0072B762FEA008D0F5A /* MoreViewController.swift */; };
+		2B57F00E2B7638F1008D0F5A /* AccountSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F00D2B7638F1008D0F5A /* AccountSummaryView.swift */; };
+		2B57F0102B763C04008D0F5A /* AccountSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F00F2B763C04008D0F5A /* AccountSummaryViewModel.swift */; };
+		2B57F0122B764017008D0F5A /* MoveMoneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F0112B764017008D0F5A /* MoveMoneyViewModel.swift */; };
+		2B57F0142B764025008D0F5A /* MoveMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F0132B764025008D0F5A /* MoveMoneyView.swift */; };
+		2B57F0162B76413F008D0F5A /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F0152B76413F008D0F5A /* MoreView.swift */; };
+		2B57F0182B76414B008D0F5A /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F0172B76414B008D0F5A /* MoreViewModel.swift */; };
 		2BA38B552B75457100B1C28C /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA38B542B75457100B1C28C /* Extension + UIColor.swift */; };
 		2BBD97CA2B739CC200D65FCA /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD97C92B739CC100D65FCA /* OnboardingContainerViewController.swift */; };
 		2BBD97CC2B73AA7E00D65FCA /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD97CB2B73AA7E00D65FCA /* OnboardingViewController.swift */; };
@@ -29,6 +38,15 @@
 		2B2355DA2B74FECC00AC9356 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		2B2355DC2B75462900AC9356 /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
 		2B2355DE2B754A0700AC9356 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2B57F0032B762FAB008D0F5A /* AccountSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewController.swift; sourceTree = "<group>"; };
+		2B57F0052B762FCE008D0F5A /* MoveMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveMoneyViewController.swift; sourceTree = "<group>"; };
+		2B57F0072B762FEA008D0F5A /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		2B57F00D2B7638F1008D0F5A /* AccountSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryView.swift; sourceTree = "<group>"; };
+		2B57F00F2B763C04008D0F5A /* AccountSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewModel.swift; sourceTree = "<group>"; };
+		2B57F0112B764017008D0F5A /* MoveMoneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveMoneyViewModel.swift; sourceTree = "<group>"; };
+		2B57F0132B764025008D0F5A /* MoveMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveMoneyView.swift; sourceTree = "<group>"; };
+		2B57F0152B76413F008D0F5A /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		2B57F0172B76414B008D0F5A /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
 		2BA38B542B75457100B1C28C /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
 		2BBD97C92B739CC100D65FCA /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		2BBD97CB2B73AA7E00D65FCA /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +81,47 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		2B57F0092B763016008D0F5A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2B2355DE2B754A0700AC9356 /* MainViewController.swift */,
+				2B57F00A2B763866008D0F5A /* AccountSummary */,
+				2B57F00C2B763880008D0F5A /* MoveMoney */,
+				2B57F00B2B763879008D0F5A /* More */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2B57F00A2B763866008D0F5A /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				2B57F0032B762FAB008D0F5A /* AccountSummaryViewController.swift */,
+				2B57F00D2B7638F1008D0F5A /* AccountSummaryView.swift */,
+				2B57F00F2B763C04008D0F5A /* AccountSummaryViewModel.swift */,
+			);
+			path = AccountSummary;
+			sourceTree = "<group>";
+		};
+		2B57F00B2B763879008D0F5A /* More */ = {
+			isa = PBXGroup;
+			children = (
+				2B57F0072B762FEA008D0F5A /* MoreViewController.swift */,
+				2B57F0152B76413F008D0F5A /* MoreView.swift */,
+				2B57F0172B76414B008D0F5A /* MoreViewModel.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		2B57F00C2B763880008D0F5A /* MoveMoney */ = {
+			isa = PBXGroup;
+			children = (
+				2B57F0052B762FCE008D0F5A /* MoveMoneyViewController.swift */,
+				2B57F0112B764017008D0F5A /* MoveMoneyViewModel.swift */,
+				2B57F0132B764025008D0F5A /* MoveMoneyView.swift */,
+			);
+			path = MoveMoney;
+			sourceTree = "<group>";
+		};
 		2BBD97C82B739C9600D65FCA /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,11 +152,11 @@
 			isa = PBXGroup;
 			children = (
 				2BC02B4E2B7240CF00D0B61E /* AppDelegate.swift */,
-				2BBD97C82B739C9600D65FCA /* Onboarding */,
 				2BC02B622B72458100D0B61E /* Login */,
+				2BBD97C82B739C9600D65FCA /* Onboarding */,
+				2B57F0092B763016008D0F5A /* Main */,
 				2B2355D92B74FEC000AC9356 /* Utils */,
 				2BC02B642B72465100D0B61E /* Supporting */,
-				2B2355DE2B754A0700AC9356 /* MainViewController.swift */,
 			);
 			path = bankey;
 			sourceTree = "<group>";
@@ -194,18 +253,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B57F0082B762FEA008D0F5A /* MoreViewController.swift in Sources */,
 				2B2355D62B74EED000AC9356 /* DummyViewController.swift in Sources */,
 				2B2355DB2B74FECC00AC9356 /* LocalState.swift in Sources */,
 				2B2355D82B74EF9C00AC9356 /* DummyView.swift in Sources */,
 				2B2355DF2B754A0700AC9356 /* MainViewController.swift in Sources */,
+				2B57F0062B762FCE008D0F5A /* MoveMoneyViewController.swift in Sources */,
+				2B57F0042B762FAB008D0F5A /* AccountSummaryViewController.swift in Sources */,
 				2BC02B662B7246CC00D0B61E /* LoginView.swift in Sources */,
 				2BC02B532B7240CF00D0B61E /* LoginViewController.swift in Sources */,
+				2B57F0142B764025008D0F5A /* MoveMoneyView.swift in Sources */,
+				2B57F00E2B7638F1008D0F5A /* AccountSummaryView.swift in Sources */,
+				2B57F0122B764017008D0F5A /* MoveMoneyViewModel.swift in Sources */,
 				2BBD97CC2B73AA7E00D65FCA /* OnboardingViewController.swift in Sources */,
 				2BBD97CE2B73AABB00D65FCA /* OnboardingView.swift in Sources */,
+				2B57F0102B763C04008D0F5A /* AccountSummaryViewModel.swift in Sources */,
 				2B2355DD2B75462900AC9356 /* Extension + UIViewController.swift in Sources */,
 				2BC02B4F2B7240CF00D0B61E /* AppDelegate.swift in Sources */,
 				2BBD97CA2B739CC200D65FCA /* OnboardingContainerViewController.swift in Sources */,
+				2B57F0182B76414B008D0F5A /* MoreViewModel.swift in Sources */,
 				2BA38B552B75457100B1C28C /* Extension + UIColor.swift in Sources */,
+				2B57F0162B76413F008D0F5A /* MoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

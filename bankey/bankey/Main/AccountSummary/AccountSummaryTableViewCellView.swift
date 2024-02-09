@@ -24,7 +24,6 @@ class AccountSummaryTableViewCellView: UIView {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Banking"
 		label.font = UIFont.preferredFont(forTextStyle: .caption1)
-		label.textColor = .black
 		return label
 	}()
 	
@@ -38,9 +37,8 @@ class AccountSummaryTableViewCellView: UIView {
 	lazy var nameLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "No-Fee All-In Chequing"
-		label.textColor = .black
-		label.font = .systemFont(ofSize: 15, weight: .medium)
+		label.text = "Account Name"
+		label.font = UIFont.preferredFont(forTextStyle: .body)
 		return label
 	}()
 	
@@ -48,7 +46,7 @@ class AccountSummaryTableViewCellView: UIView {
 		let stack = UIStackView()
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .vertical
-		stack.spacing = 5
+		stack.spacing = 0
 		return stack
 	}()
 	
@@ -56,8 +54,8 @@ class AccountSummaryTableViewCellView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Current balance"
-		label.textColor = .black
-		label.font = .systemFont(ofSize: 12, weight: .medium)
+		label.textAlignment = .right
+		label.font = UIFont.preferredFont(forTextStyle: .body)
 		return label
 	}()
 	
@@ -65,15 +63,15 @@ class AccountSummaryTableViewCellView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "$17,562.44"
-		label.textColor = .black
-		label.font = .systemFont(ofSize: 25, weight: .medium)
+		label.textAlignment = .right
+		label.font = UIFont.preferredFont(forTextStyle: .body)
 		return label
 	}()
 	
 	lazy var chevronImageView: UIImageView = {
 		let image = UIImageView()
 		image.translatesAutoresizingMaskIntoConstraints = false
-		image.image = UIImage(systemName: "chevron.right")
+		image.image = UIImage(systemName: "chevron.right")?.withTintColor(.appColor, renderingMode: .alwaysOriginal)
 		image.contentMode = .scaleAspectFit
 		return image
 	}()
@@ -91,8 +89,8 @@ extension AccountSummaryTableViewCellView {
 	}
 	private func configConstraints() {
 		NSLayoutConstraint.activate([
-			typeLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-			typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+			typeLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15),
+			typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
 			
 			underlineView.heightAnchor.constraint(equalToConstant: 4),
 			underlineView.widthAnchor.constraint(equalToConstant: 60),

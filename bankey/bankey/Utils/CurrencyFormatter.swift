@@ -17,8 +17,7 @@ struct CurrencyFormatter {
 	// Converts 929466.23 > "929,466" "23"
 	func breakIntoDollarsAndCents(_ amount: Decimal) -> (String, String) {
 		let tuple = modf(amount.doubleValue)
-		
-		
+	
 		let dollars = convertDollar(tuple.0)
 		let cents = convertCents(tuple.1)
 		

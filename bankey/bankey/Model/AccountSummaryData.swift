@@ -7,12 +7,6 @@
 
 import UIKit
 
-enum AccountType: String {
-	case Banking
-	case CreditCard
-	case Investment
-}
-
 struct AccountSummaryData {
 		var accountType: AccountType?
 		var accountName: String?
@@ -20,5 +14,11 @@ struct AccountSummaryData {
 	
 	var balanceAsAttributtedString: NSAttributedString {
 		return CurrencyFormatter().makeAttributedCurrency(balance ?? 0)
+	}
+	
+	enum AccountType: String {
+		case Banking
+		case CreditCard
+		case Investment
 	}
 }

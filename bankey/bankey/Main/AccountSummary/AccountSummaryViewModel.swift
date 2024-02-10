@@ -9,7 +9,7 @@ import UIKit
 
 class AccountSummaryViewModel {
 	
-	private var data: [AccountSummaryData]?
+	var data: [AccountSummaryData]?
 	
 	public var numberOfRowsInSection: Int {
 		return data?.count ?? 1
@@ -19,6 +19,7 @@ class AccountSummaryViewModel {
 		var accountData = AccountSummaryData()
 		accountData.accountName = "Guilherme Viana"
 		accountData.accountType = .CreditCard
+		accountData.balance = 10000.50
 		return accountData//data?[indexPath.row] ?? AccountSummaryData()
 	}
 	

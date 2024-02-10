@@ -32,12 +32,12 @@ class AccountSummaryTableViewCell: UITableViewCell {
 		])
 	}
 	
-	public func setupCell(summaryData: AccountSummaryData) {
-		cellView.balanceAmountLabel.attributedText = summaryData.balanceAsAttributtedString
-		cellView.nameLabel.text = summaryData.accountName
-		cellView.typeLabel.text = summaryData.accountType?.rawValue
+	public func setupCell(with summaryData: AccountSummaryData?) {
+		cellView.balanceAmountLabel.attributedText = summaryData?.balanceAsAttributtedString
+		cellView.nameLabel.text = summaryData?.accountName
+		cellView.typeLabel.text = summaryData?.accountType?.rawValue
 		
-		switch summaryData.accountType {
+		switch summaryData?.accountType {
 		case .Banking:
 			cellView.underlineView.backgroundColor = .appColor
 			cellView.balanceLabel.text = "Current balance"

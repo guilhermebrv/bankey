@@ -32,7 +32,23 @@ class AccountSummaryTableViewCell: UITableViewCell {
 		])
 	}
 	
-	public func setupCell() {
+	public func setupCell(summaryData: AccountSummaryData) {
+		cellView.balanceAmountLabel.attributedText = summaryData.balanceAsAttributtedString
+		cellView.nameLabel.text = summaryData.accountName
+		cellView.typeLabel.text = summaryData.accountType?.rawValue
 		
+		switch summaryData.accountType {
+		case .Banking:
+			cellView.underlineView.backgroundColor = .appColor
+			cellView.balanceLabel.text = "Current balance"
+		case .CreditCard:
+			cellView.underlineView.backgroundColor = .systemOrange
+			cellView.balanceLabel.text = "Balance"
+		case .Investment:
+			cellView.underlineView.backgroundColor = .systemPurple
+			cellView.balanceLabel.text = "Value"
+		default:
+			break
+		}
 	}
 }

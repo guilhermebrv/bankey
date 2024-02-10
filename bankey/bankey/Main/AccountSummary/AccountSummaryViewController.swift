@@ -53,6 +53,7 @@ extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSour
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryTableViewCell.identifier, for: indexPath) as? AccountSummaryTableViewCell
+		cell?.setupCell(summaryData: viewModel.loadCurrentTableViewCell(indexPath: indexPath))
 		return cell ?? UITableViewCell()
 	}
 	

@@ -12,6 +12,9 @@
 		2B2355DB2B74FECC00AC9356 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355DA2B74FECC00AC9356 /* LocalState.swift */; };
 		2B2355DD2B75462900AC9356 /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355DC2B75462900AC9356 /* Extension + UIViewController.swift */; };
 		2B2355DF2B754A0700AC9356 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355DE2B754A0700AC9356 /* MainViewController.swift */; };
+		2B564CD62B77C97D00382A2E /* AccountSummaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B564CD52B77C97D00382A2E /* AccountSummaryData.swift */; };
+		2B564CD82B77CAEF00382A2E /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B564CD72B77CAEF00382A2E /* CurrencyFormatter.swift */; };
+		2B564CDA2B77CBB500382A2E /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B564CD92B77CBB500382A2E /* Decimal.swift */; };
 		2B57F0042B762FAB008D0F5A /* AccountSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F0032B762FAB008D0F5A /* AccountSummaryViewController.swift */; };
 		2B57F0062B762FCE008D0F5A /* MoveMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F0052B762FCE008D0F5A /* MoveMoneyViewController.swift */; };
 		2B57F0082B762FEA008D0F5A /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57F0072B762FEA008D0F5A /* MoreViewController.swift */; };
@@ -42,6 +45,9 @@
 		2B2355DA2B74FECC00AC9356 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		2B2355DC2B75462900AC9356 /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
 		2B2355DE2B754A0700AC9356 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2B564CD52B77C97D00382A2E /* AccountSummaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryData.swift; sourceTree = "<group>"; };
+		2B564CD72B77CAEF00382A2E /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
+		2B564CD92B77CBB500382A2E /* Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
 		2B57F0032B762FAB008D0F5A /* AccountSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewController.swift; sourceTree = "<group>"; };
 		2B57F0052B762FCE008D0F5A /* MoveMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveMoneyViewController.swift; sourceTree = "<group>"; };
 		2B57F0072B762FEA008D0F5A /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
@@ -85,8 +91,18 @@
 				2BA38B542B75457100B1C28C /* Extension + UIColor.swift */,
 				2B2355DC2B75462900AC9356 /* Extension + UIViewController.swift */,
 				2B2355DA2B74FECC00AC9356 /* LocalState.swift */,
+				2B564CD72B77CAEF00382A2E /* CurrencyFormatter.swift */,
+				2B564CD92B77CBB500382A2E /* Decimal.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2B564CD42B77C96300382A2E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2B564CD52B77C97D00382A2E /* AccountSummaryData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2B57F0092B763016008D0F5A /* Main */ = {
@@ -182,6 +198,7 @@
 				2BC02B4E2B7240CF00D0B61E /* AppDelegate.swift */,
 				2BC02B622B72458100D0B61E /* Login */,
 				2BBD97C82B739C9600D65FCA /* Onboarding */,
+				2B564CD42B77C96300382A2E /* Model */,
 				2B57F0092B763016008D0F5A /* Main */,
 				2B2355D92B74FEC000AC9356 /* Utils */,
 				2BC02B642B72465100D0B61E /* Supporting */,
@@ -300,12 +317,15 @@
 				2B57F0202B768D26008D0F5A /* AccountSummaryTableViewCell.swift in Sources */,
 				2B57F01A2B7647DC008D0F5A /* AccountSummaryHeaderView.swift in Sources */,
 				2B57F0102B763C04008D0F5A /* AccountSummaryViewModel.swift in Sources */,
+				2B564CDA2B77CBB500382A2E /* Decimal.swift in Sources */,
 				2B2355DD2B75462900AC9356 /* Extension + UIViewController.swift in Sources */,
+				2B564CD82B77CAEF00382A2E /* CurrencyFormatter.swift in Sources */,
 				2BC02B4F2B7240CF00D0B61E /* AppDelegate.swift in Sources */,
 				2BBD97CA2B739CC200D65FCA /* OnboardingContainerViewController.swift in Sources */,
 				2B57F0182B76414B008D0F5A /* MoreViewModel.swift in Sources */,
 				2BA38B552B75457100B1C28C /* Extension + UIColor.swift in Sources */,
 				2B57F0162B76413F008D0F5A /* MoreView.swift in Sources */,
+				2B564CD62B77C97D00382A2E /* AccountSummaryData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

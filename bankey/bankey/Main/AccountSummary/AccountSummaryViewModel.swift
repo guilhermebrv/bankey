@@ -9,14 +9,21 @@ import UIKit
 
 class AccountSummaryViewModel {
 	
-	let games = [ "Pacman", "Space Invaders", "Space Patrol"]
+	private var data: [AccountSummaryData]?
 	
 	public var numberOfRowsInSection: Int {
-		return games.count
+		return data?.count ?? 1
+	}
+	
+	public func loadCurrentTableViewCell(indexPath: IndexPath) -> AccountSummaryData {
+		var accountData = AccountSummaryData()
+		accountData.accountName = "Guilherme Viana"
+		accountData.accountType = .CreditCard
+		return accountData//data?[indexPath.row] ?? AccountSummaryData()
 	}
 	
 	public var heightForRowAt: CGFloat {
-		return 85
+		return 90
 	}
 	
 }

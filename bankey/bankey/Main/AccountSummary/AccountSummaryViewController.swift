@@ -19,8 +19,6 @@ class AccountSummaryViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		navigationController?.isNavigationBarHidden = true
-		view.safeAreaLayoutGuide.owningView?.backgroundColor = .appColor
 	}
 	
     override func viewDidLoad() {

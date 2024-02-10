@@ -19,7 +19,7 @@ class AccountSummaryViewModel {
 		var accountData = AccountSummaryData()
 		accountData.accountName = "Guilherme Viana"
 		accountData.accountType = .CreditCard
-		accountData.balance = 10000.50
+		accountData.balance = 929466.00
 		return accountData//data?[indexPath.row] ?? AccountSummaryData()
 	}
 	

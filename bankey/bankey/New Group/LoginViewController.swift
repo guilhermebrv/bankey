@@ -55,7 +55,7 @@ extension LoginViewController: UITextFieldDelegate {
 	}
 }
 
-extension LoginViewController: LoginViewProtocol {
+extension LoginViewController: LoginViewProtocol {	
 	func signInTapped() {
 		login()
 	}

@@ -23,30 +23,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		loginViewController.delegate = self
 		onboardingContainerViewController.delegate = self
 		
-		let vc = mainViewController
-		vc.setStatusBar()
+		registerForNotifications()
 		
-		UINavigationBar.appearance().isTranslucent = false
-		UINavigationBar.appearance().backgroundColor = .appColor
-		
-		window?.rootViewController = vc
-		
+		displayLogin()
 		return true
 	}
 }
 
 extension AppDelegate: LoginViewControllerDelegate, OnboardingContainerViewControllerDelegate, DummyViewControllerDelegate{
-	func didLogout() {
+	@objc func didLogout() {
 		setRootViewController(loginViewController, animated: true)
 	}
 	
 	func didFinishOnboarding() {
-		setRootViewController(mainViewController, animated: true)
 		LocalState.hasOnboarded = true
+		prepMainView()
+		setRootViewController(mainViewController, animated: true)
 	}
 	
 	func didLogin() {
-		LocalState.hasOnboarded ? setRootViewController(mainViewController, animated: true) : setRootViewController(onboardingContainerViewController, animated: true)
+		displayNextScreen()
+	}
+	
+	private func displayLogin() {
+		setRootViewController(loginViewController)
+	}
+	
+	private func displayNextScreen() {
+		if LocalState.hasOnboarded {
+			prepMainView()
+			setRootViewController(mainViewController)
+		} else {
+			setRootViewController(onboardingContainerViewController)
+		}
+	}
+	
+	private func prepMainView() {
+		mainViewController.setStatusBar()
+		UINavigationBar.appearance().isTranslucent = false
+		UINavigationBar.appearance().backgroundColor = .appColor
+	}
+	
+	private func registerForNotifications() {
+		NotificationCenter.default.addObserver(self, selector: #selector(didLogout), name: .logout, object: nil)
 	}
 }
 

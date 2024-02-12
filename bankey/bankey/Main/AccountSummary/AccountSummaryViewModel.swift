@@ -17,7 +17,7 @@ class AccountSummaryViewModel {
 	
 	public func loadCurrentTableViewCell(indexPath: IndexPath) -> AccountSummaryData {
 		var accountData = AccountSummaryData()
-		accountData.accountName = "Guilherme Viana"
+		accountData.accountName = "Guilherme Vianasdfsdfsdfdsfsdfsdfds"
 		accountData.accountType = .CreditCard
 		accountData.balance = 929466.00
 		return accountData//data?[indexPath.row] ?? AccountSummaryData()

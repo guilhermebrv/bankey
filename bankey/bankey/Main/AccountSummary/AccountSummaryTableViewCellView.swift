@@ -39,6 +39,7 @@ class AccountSummaryTableViewCellView: UIView {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Account Name"
 		label.font = UIFont.preferredFont(forTextStyle: .body)
+		label.adjustsFontSizeToFitWidth = true
 		return label
 	}()
 	
@@ -56,6 +57,7 @@ class AccountSummaryTableViewCellView: UIView {
 		label.text = "Current balance"
 		label.textAlignment = .right
 		label.font = UIFont.preferredFont(forTextStyle: .body)
+		label.adjustsFontSizeToFitWidth = true
 		return label
 	}()
 	
@@ -65,6 +67,7 @@ class AccountSummaryTableViewCellView: UIView {
 		label.textAlignment = .right
 		label.font = UIFont.preferredFont(forTextStyle: .body)
 		label.attributedText = makeFormattedBalance(dollars: "17,562", cents: "44")
+		label.adjustsFontSizeToFitWidth = true
 		return label
 	}()
 	
@@ -99,6 +102,7 @@ extension AccountSummaryTableViewCellView {
 			
 			nameLabel.leadingAnchor.constraint(equalTo: typeLabel.leadingAnchor),
 			nameLabel.topAnchor.constraint(equalTo: underlineView.bottomAnchor, constant: 12),
+			nameLabel.trailingAnchor.constraint(equalTo: balanceAmountLabel.leadingAnchor, constant: -10),
 			
 			chevronImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
 			chevronImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),

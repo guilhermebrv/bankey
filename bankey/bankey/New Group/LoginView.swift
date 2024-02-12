@@ -76,6 +76,8 @@ class LoginView: UIView {
 		textField.placeholder = "Password"
 		textField.isSecureTextEntry = true
 		textField.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+		textField.enablePasswordToggle()
+		textField.rightViewMode = .always
 		return textField
 	}()
 	
@@ -151,7 +153,7 @@ extension LoginView {
 			passwordTextField.leadingAnchor.constraint(equalTo: usernameTextField.leadingAnchor),
 			passwordTextField.trailingAnchor.constraint(equalTo: usernameTextField.trailingAnchor),
 			passwordTextField.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 1),
-
+			
 			loginButton.topAnchor.constraint(equalToSystemSpacingBelow: bgView.bottomAnchor, multiplier: 2),
 			loginButton.leadingAnchor.constraint(equalTo: bgView.leadingAnchor),
 			loginButton.trailingAnchor.constraint(equalTo: bgView.trailingAnchor),

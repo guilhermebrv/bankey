@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol AccountSummaryViewControllerDelegate: AnyObject {
+	func didLogout()
+}
+
 class AccountSummaryView: UIView {
+	weak var delegate: AccountSummaryViewControllerDelegate?
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -19,15 +24,26 @@ class AccountSummaryView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	lazy var logoutButton: UIBarButtonItem = {
+		let button = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
+		button.tintColor = .label
+		return button
+	}()
+
 	lazy var tableView: UITableView = {
 		let table = UITableView()
 		table.translatesAutoresizingMaskIntoConstraints = false
 		table.showsVerticalScrollIndicator = false
 		table.register(AccountSummaryTableViewCell.self, forCellReuseIdentifier: AccountSummaryTableViewCell.identifier)
 		table.tableFooterView = UIView()
-		table.backgroundColor = .appColor
 		return table
 	}()
+}
+
+extension AccountSummaryView {
+	@objc func logoutTapped() {
+		delegate?.didLogout()
+	}
 }
 
 extension AccountSummaryView {

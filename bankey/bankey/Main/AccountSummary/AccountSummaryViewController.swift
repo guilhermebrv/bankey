@@ -23,6 +23,7 @@ class AccountSummaryViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationItem.rightBarButtonItem = accountSummaryView?.logoutButton
 		signProtocols()
 		setupHeaderTableView()
     }
@@ -32,6 +33,7 @@ extension AccountSummaryViewController {
 	private func signProtocols() {
 		accountSummaryView?.tableView.delegate = self
 		accountSummaryView?.tableView.dataSource = self
+		accountSummaryView?.delegate = self
 	}
 	private func setupHeaderTableView() {
 		let header = AccountSummaryHeaderView(frame: .zero)
@@ -41,6 +43,12 @@ extension AccountSummaryViewController {
 		header.frame.size = size
 		
 		accountSummaryView?.tableView.tableHeaderView = header
+	}
+}
+
+extension AccountSummaryViewController: AccountSummaryViewControllerDelegate {
+	func didLogout() {
+		NotificationCenter.default.post(name: .logout, object: nil)
 	}
 }
 

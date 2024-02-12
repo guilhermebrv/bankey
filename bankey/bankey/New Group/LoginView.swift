@@ -14,6 +14,12 @@ protocol LoginViewProtocol: AnyObject {
 class LoginView: UIView {
 	weak var delegate: LoginViewProtocol?
 	
+	// Animation
+	var leadingEdgeOnScreen: CGFloat = 16
+	var leadingEdgeOffScreen: CGFloat = -1000
+	var titleleadingAnchor: NSLayoutConstraint?
+	var subtitleLeadingAnchor: NSLayoutConstraint?
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		addElements()
@@ -32,6 +38,7 @@ class LoginView: UIView {
 		label.font = .systemFont(ofSize: 40, weight: .bold)
 		label.numberOfLines = 0
 		label.text = "Bankey"
+		label.alpha = 0
 		return label
 	}()
 	
@@ -43,6 +50,7 @@ class LoginView: UIView {
 		label.font = .systemFont(ofSize: 20, weight: .medium)
 		label.numberOfLines = 0
 		label.text = "Your premium source for all things banking!"
+		label.alpha = 0
 		return label
 	}()
 	
@@ -115,6 +123,34 @@ extension LoginView {
 }
 
 extension LoginView {
+	public func animate() {
+		let duration = 0.8
+		
+		let animator1 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
+			self.titleleadingAnchor?.constant = self.leadingEdgeOnScreen
+			self.layoutIfNeeded()
+		}
+		animator1.startAnimation()
+		
+		let animator2 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
+			self.subtitleLeadingAnchor?.constant = self.leadingEdgeOnScreen
+			self.layoutIfNeeded()
+		}
+		animator2.startAnimation(afterDelay: 0.2)
+		
+		let animator3 = UIViewPropertyAnimator(duration: duration*2, curve: .easeInOut) {
+			self.titleLabel.alpha = 1
+			self.layoutIfNeeded()
+		}
+		animator3.startAnimation(afterDelay: 0.2)
+		
+		let animator4 = UIViewPropertyAnimator(duration: duration*2, curve: .easeInOut) {
+			self.descriptionLabel.alpha = 1
+			self.layoutIfNeeded()
+		}
+		animator4.startAnimation(afterDelay: 0.2)
+	}
+	
 	private func addElements() {
 		addSubview(titleLabel)
 		addSubview(descriptionLabel)
@@ -127,14 +163,16 @@ extension LoginView {
 	}
 	
 	private func configConstraints() {
+		titleleadingAnchor = titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingEdgeOffScreen)
+		titleleadingAnchor?.isActive = true
+		subtitleLeadingAnchor = descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingEdgeOffScreen)
+		subtitleLeadingAnchor?.isActive = true
 		NSLayoutConstraint.activate([
 			titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -20),
-			titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-			titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+			titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 			
 			descriptionLabel.bottomAnchor.constraint(equalTo: bgView.topAnchor, constant: -30),
-			descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-			descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+			descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 			
 			bgView.centerYAnchor.constraint(equalTo: centerYAnchor),
 			bgView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),

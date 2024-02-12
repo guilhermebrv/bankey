@@ -31,6 +31,11 @@ class LoginViewController: UIViewController {
 		loginView.loginButton.configuration?.showsActivityIndicator = false
 		loginView.errorMessageLabel.text = ""
 	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		loginView.animate()
+	}
 }
 
 extension LoginViewController {

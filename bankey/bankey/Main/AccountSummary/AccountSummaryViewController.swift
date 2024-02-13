@@ -19,6 +19,8 @@ class AccountSummaryViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		registerForNotifications()
+		viewModel.fetchAccountData()
 	}
 	
     override func viewDidLoad() {
@@ -26,6 +28,7 @@ class AccountSummaryViewController: UIViewController {
 		navigationItem.rightBarButtonItem = accountSummaryView?.logoutButton
 		signProtocols()
 		setupHeaderTableView()
+		
     }
 }
 
@@ -43,6 +46,13 @@ extension AccountSummaryViewController {
 		header.frame.size = size
 		
 		accountSummaryView?.tableView.tableHeaderView = header
+	}
+	private func registerForNotifications() {
+		NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .dataFetched, object: nil)
+	}
+	
+	@objc func updateUI() {
+		accountSummaryView?.tableView.reloadData()
 	}
 }
 

@@ -8,19 +8,27 @@
 import UIKit
 
 class AccountSummaryViewModel {
-	
-	var data: [AccountSummaryData]?
+	var data: [AccountSummaryData] = []
 	
 	public var numberOfRowsInSection: Int {
-		return data?.count ?? 1
+		return data.count
+	}
+	
+	public func fetchAccountData() {
+		Task {
+			do {
+				self.data = try await AccountSummaryDataService().getAccountData()
+				DispatchQueue.main.async {
+					NotificationCenter.default.post(name: .dataFetched, object: nil)
+				}
+			} catch {
+				print(error)
+			}
+		}
 	}
 	
 	public func loadCurrentTableViewCell(indexPath: IndexPath) -> AccountSummaryData {
-		var accountData = AccountSummaryData()
-		accountData.accountName = "Guilherme Vianasdfsdfsdfdsfsdfsdfds"
-		accountData.accountType = .CreditCard
-		accountData.balance = 929466.00
-		return accountData//data?[indexPath.row] ?? AccountSummaryData()
+		return data[indexPath.row]
 	}
 	
 	public var heightForRowAt: CGFloat {

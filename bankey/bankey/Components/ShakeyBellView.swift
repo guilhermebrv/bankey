@@ -18,6 +18,18 @@ class ShakeyBellView: UIView {
 		imageView.isUserInteractionEnabled = true
 		return imageView
 	}()
+	
+	lazy var notificationButton: UIButton = {
+		let button = UIButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.backgroundColor = .systemRed
+		button.layer.cornerRadius = 16/2
+		button.titleLabel?.font = .systemFont(ofSize: 13)
+		button.setTitle("9", for: .normal)
+		button.setTitleColor(.white, for: .normal)
+		button.addTarget(self, action: #selector(imageViewTapped), for: .touchUpInside)
+		return button
+	}()
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -37,6 +49,7 @@ class ShakeyBellView: UIView {
 extension ShakeyBellView {
 	private func addElements() {
 		addSubview(shakeyBellImageView)
+		addSubview(notificationButton)
 	}
 	
 	private func configConstraints() {
@@ -44,7 +57,12 @@ extension ShakeyBellView {
 			shakeyBellImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
 			shakeyBellImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
 			shakeyBellImageView.widthAnchor.constraint(equalToConstant: 24),
-			shakeyBellImageView.heightAnchor.constraint(equalToConstant: 24)
+			shakeyBellImageView.heightAnchor.constraint(equalToConstant: 24),
+			
+			notificationButton.topAnchor.constraint(equalTo: shakeyBellImageView.topAnchor),
+			notificationButton.leadingAnchor.constraint(equalTo: shakeyBellImageView.trailingAnchor, constant: -10),
+			notificationButton.widthAnchor.constraint(equalToConstant: 16),
+			notificationButton.heightAnchor.constraint(equalToConstant: 16),
 		])
 	}
 }

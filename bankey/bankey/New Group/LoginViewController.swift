@@ -67,11 +67,13 @@ extension LoginViewController: LoginViewProtocol {
 	
 	private func login() {
 		guard let username = loginView.usernameTextField.text, let password = loginView.passwordTextField.text else {
+			loginView.shakeButton()
 			assertionFailure("Username or password should never be nil")
 			return
 		}
 		
 		if username.isEmpty || password.isEmpty {
+			loginView.shakeButton()
 			showMessage(message: "Username / Password should not be empty")
 			return
 		}
@@ -80,6 +82,7 @@ extension LoginViewController: LoginViewProtocol {
 			loginView.loginButton.configuration?.showsActivityIndicator = true
 			delegate?.didLogin()
 		} else {
+			loginView.shakeButton()
 			showMessage(message: "Username / Password is incorrect")
 		}
 	}

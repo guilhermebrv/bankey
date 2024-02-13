@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B2355D62B74EED000AC9356 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355D52B74EED000AC9356 /* DummyViewController.swift */; };
-		2B2355D82B74EF9C00AC9356 /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355D72B74EF9C00AC9356 /* DummyView.swift */; };
 		2B2355DB2B74FECC00AC9356 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355DA2B74FECC00AC9356 /* LocalState.swift */; };
 		2B2355DD2B75462900AC9356 /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355DC2B75462900AC9356 /* Extension + UIViewController.swift */; };
 		2B2355DF2B754A0700AC9356 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355DE2B754A0700AC9356 /* MainViewController.swift */; };
+		2B241F712B7BBC7400C0C58A /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B241F702B7BBC7400C0C58A /* ShakeyBellView.swift */; };
 		2B564CD62B77C97D00382A2E /* AccountSummaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B564CD52B77C97D00382A2E /* AccountSummaryData.swift */; };
 		2B564CD82B77CAEF00382A2E /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B564CD72B77CAEF00382A2E /* CurrencyFormatter.swift */; };
 		2B564CDA2B77CBB500382A2E /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B564CD92B77CBB500382A2E /* Decimal.swift */; };
@@ -53,11 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B2355D52B74EED000AC9356 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
-		2B2355D72B74EF9C00AC9356 /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		2B2355DA2B74FECC00AC9356 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		2B2355DC2B75462900AC9356 /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
 		2B2355DE2B754A0700AC9356 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2B241F702B7BBC7400C0C58A /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		2B564CD52B77C97D00382A2E /* AccountSummaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryData.swift; sourceTree = "<group>"; };
 		2B564CD72B77CAEF00382A2E /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		2B564CD92B77CBB500382A2E /* Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
@@ -121,6 +119,14 @@
 				2B88DD0F2B7A4C390093E5C0 /* NSNotificationName.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2B241F6F2B7BBC5C00C0C58A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2B241F702B7BBC7400C0C58A /* ShakeyBellView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		2B564CD42B77C96300382A2E /* Model */ = {
@@ -236,6 +242,7 @@
 				2BBD97C82B739C9600D65FCA /* Onboarding */,
 				2B564CD42B77C96300382A2E /* Model */,
 				2B57F0092B763016008D0F5A /* Main */,
+				2B241F6F2B7BBC5C00C0C58A /* Components */,
 				2B2355D92B74FEC000AC9356 /* Utils */,
 				2BC02B642B72465100D0B61E /* Supporting */,
 			);
@@ -247,8 +254,6 @@
 			children = (
 				2BC02B522B7240CF00D0B61E /* LoginViewController.swift */,
 				2BC02B652B7246CC00D0B61E /* LoginView.swift */,
-				2B2355D52B74EED000AC9356 /* DummyViewController.swift */,
-				2B2355D72B74EF9C00AC9356 /* DummyView.swift */,
 			);
 			name = Login;
 			path = "New Group";
@@ -376,12 +381,11 @@
 			files = (
 				2B57F0082B762FEA008D0F5A /* MoreViewController.swift in Sources */,
 				2B57F0222B768D9F008D0F5A /* AccountSummaryTableViewCellView.swift in Sources */,
-				2B2355D62B74EED000AC9356 /* DummyViewController.swift in Sources */,
 				2B2355DB2B74FECC00AC9356 /* LocalState.swift in Sources */,
-				2B2355D82B74EF9C00AC9356 /* DummyView.swift in Sources */,
 				2B2355DF2B754A0700AC9356 /* MainViewController.swift in Sources */,
 				2B57F0062B762FCE008D0F5A /* MoveMoneyViewController.swift in Sources */,
 				2B57F0042B762FAB008D0F5A /* AccountSummaryViewController.swift in Sources */,
+				2B241F712B7BBC7400C0C58A /* ShakeyBellView.swift in Sources */,
 				2B88DD102B7A4C390093E5C0 /* NSNotificationName.swift in Sources */,
 				2BC02B662B7246CC00D0B61E /* LoginView.swift in Sources */,
 				2BC02B532B7240CF00D0B61E /* LoginViewController.swift in Sources */,

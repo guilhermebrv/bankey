@@ -10,6 +10,12 @@ import UIKit
 class AccountSummaryHeaderView: UIView {
 	@IBOutlet var contentView: UIView!
 	
+	lazy var shakeyBell: ShakeyBellView = {
+		let bell = ShakeyBellView()
+		bell.translatesAutoresizingMaskIntoConstraints = false
+		return bell
+	}()
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		commonInit()
@@ -21,13 +27,14 @@ class AccountSummaryHeaderView: UIView {
 	}
 	
 	override var intrinsicContentSize: CGSize {
-		return CGSize(width: UIView.noIntrinsicMetric, height: 144)
+		return CGSize(width: UIView.noIntrinsicMetric, height: 170)
 	}
 	
 	private func commonInit() {
 		let bundle = Bundle(for: AccountSummaryHeaderView.self)
 		bundle.loadNibNamed("AccountSummaryHeaderView", owner: self, options: nil)
 		addSubview(contentView)
+		addSubview(shakeyBell)
 		contentView.backgroundColor = .appColor
 		
 		contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,5 +42,8 @@ class AccountSummaryHeaderView: UIView {
 		contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
 		contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
 		contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+		
+		shakeyBell.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+		shakeyBell.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 	}
 }

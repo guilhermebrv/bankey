@@ -55,9 +55,6 @@ extension LoginViewController: UITextFieldDelegate {
 	func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
 		return true
 	}
-	
-	func textFieldDidEndEditing(_ textField: UITextField) {
-	}
 }
 
 extension LoginViewController: LoginViewProtocol {	
@@ -80,7 +77,9 @@ extension LoginViewController: LoginViewProtocol {
 		
 		if username == "Guilherme" && password == "123" {
 			loginView.loginButton.configuration?.showsActivityIndicator = true
-			delegate?.didLogin()
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+				self.delegate?.didLogin()
+			}
 		} else {
 			loginView.shakeButton()
 			showMessage(message: "Username / Password is incorrect")

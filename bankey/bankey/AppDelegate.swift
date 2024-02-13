@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 }
 
-extension AppDelegate: LoginViewControllerDelegate, OnboardingContainerViewControllerDelegate, DummyViewControllerDelegate{
+extension AppDelegate: LoginViewControllerDelegate, OnboardingContainerViewControllerDelegate {
 	@objc func didLogout() {
 		setRootViewController(loginViewController, animated: true)
 	}

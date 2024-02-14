@@ -15,9 +15,6 @@ class AccountSummaryHeaderViewModel {
 		Task {
 			do {
 				self.data = try await AccountSummaryDataService().getProfileData(forUserId: userId)
-				DispatchQueue.main.async {
-					NotificationCenter.default.post(name: .profileDataFetched, object: nil)
-				}
 			} catch {
 				print(error)
 			}

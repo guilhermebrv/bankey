@@ -21,9 +21,7 @@ class AccountSummaryViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		registerForNotifications()
-		headerViewModel.fetchprofileData()
-		viewModel.fetchAccountData()
+		fetchDataAndLoadView()
 	}
 	
     override func viewDidLoad() {
@@ -40,6 +38,19 @@ extension AccountSummaryViewController {
 		accountSummaryView?.tableView.dataSource = self
 		accountSummaryView?.delegate = self
 	}
+	
+	private func fetchDataAndLoadView() {
+		let group = DispatchGroup()
+		
+		group.enter()
+		headerViewModel.fetchprofileData()
+		viewModel.fetchAccountData()
+		group.leave()
+		
+		group.notify(queue: .main) {
+			self.updateUI()
+		}
+	}
 	private func setupHeaderTableView() {
 		var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
 		size.width = UIScreen.main.bounds.width
@@ -47,16 +58,8 @@ extension AccountSummaryViewController {
 	
 		accountSummaryView?.tableView.tableHeaderView = header
 	}
-	private func registerForNotifications() {
-		NotificationCenter.default.addObserver(self, selector: #selector(updateHeaderUI), name: .profileDataFetched, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .dataFetched, object: nil)
-	}
 	
 	@objc func updateUI() {
-		accountSummaryView?.tableView.reloadData()
-	}
-	
-	@objc func updateHeaderUI() {
 		let hour = Calendar.current.component(.hour, from: .now)
 		var greeting = "Good morning"
 		if hour >= 12 && hour < 19 {

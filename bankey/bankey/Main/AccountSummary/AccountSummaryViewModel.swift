@@ -20,9 +20,6 @@ class AccountSummaryViewModel {
 		Task {
 			do {
 				self.data = try await AccountSummaryDataService().getAccountData(forUserId: userId)
-				DispatchQueue.main.async {
-					NotificationCenter.default.post(name: .dataFetched, object: nil)
-				}
 			} catch {
 				print(error)
 			}

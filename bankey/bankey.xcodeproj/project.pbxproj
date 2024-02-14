@@ -33,6 +33,8 @@
 		2B88DD122B7A5EA50093E5C0 /* Extension + UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B88DD112B7A5EA50093E5C0 /* Extension + UITextField.swift */; };
 		2B8F2CD32B7CD442004D68CB /* AccountSummaryHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8F2CD22B7CD442004D68CB /* AccountSummaryHeaderViewModel.swift */; };
 		2B8F2CD52B7CD74A004D68CB /* Extension + Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8F2CD42B7CD74A004D68CB /* Extension + Date.swift */; };
+		2B8F2CDE2B7CEDE2004D68CB /* ProfileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8F2CDD2B7CEDE2004D68CB /* ProfileTest.swift */; };
+		2B8F2CE02B7CF0A4004D68CB /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8F2CDF2B7CF0A4004D68CB /* AccountTests.swift */; };
 		2BA38B552B75457100B1C28C /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA38B542B75457100B1C28C /* Extension + UIColor.swift */; };
 		2BBD97CA2B739CC200D65FCA /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD97C92B739CC100D65FCA /* OnboardingContainerViewController.swift */; };
 		2BBD97CC2B73AA7E00D65FCA /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD97CB2B73AA7E00D65FCA /* OnboardingViewController.swift */; };
@@ -82,6 +84,8 @@
 		2B88DD112B7A5EA50093E5C0 /* Extension + UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UITextField.swift"; sourceTree = "<group>"; };
 		2B8F2CD22B7CD442004D68CB /* AccountSummaryHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryHeaderViewModel.swift; sourceTree = "<group>"; };
 		2B8F2CD42B7CD74A004D68CB /* Extension + Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Date.swift"; sourceTree = "<group>"; };
+		2B8F2CDD2B7CEDE2004D68CB /* ProfileTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTest.swift; sourceTree = "<group>"; };
+		2B8F2CDF2B7CF0A4004D68CB /* AccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
 		2BA38B542B75457100B1C28C /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
 		2BBD97C92B739CC100D65FCA /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		2BBD97CB2B73AA7E00D65FCA /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +152,8 @@
 		2B564CE02B77F8C900382A2E /* bankeyUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				2B564CE82B77F9C000382A2E /* CurrencyFormatterTest.swift */,
+				2B8F2CDC2B7CEDC8004D68CB /* AccountSummary */,
+				2B8F2CDB2B7CEDBF004D68CB /* Utils */,
 			);
 			path = bankeyUnitTests;
 			sourceTree = "<group>";
@@ -230,6 +235,23 @@
 				2B2355DE2B754A0700AC9356 /* MainViewController.swift */,
 			);
 			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		2B8F2CDB2B7CEDBF004D68CB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2B564CE82B77F9C000382A2E /* CurrencyFormatterTest.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		2B8F2CDC2B7CEDC8004D68CB /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				2B8F2CDD2B7CEDE2004D68CB /* ProfileTest.swift */,
+				2B8F2CDF2B7CF0A4004D68CB /* AccountTests.swift */,
+			);
+			path = AccountSummary;
 			sourceTree = "<group>";
 		};
 		2BBD97C82B739C9600D65FCA /* Onboarding */ = {
@@ -397,6 +419,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B564CE92B77F9C000382A2E /* CurrencyFormatterTest.swift in Sources */,
+				2B8F2CE02B7CF0A4004D68CB /* AccountTests.swift in Sources */,
+				2B8F2CDE2B7CEDE2004D68CB /* ProfileTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@ import UIKit
 
 protocol AccountSummaryViewControllerDelegate: AnyObject {
 	func didLogout()
+	func refreshData()
 }
 
 class AccountSummaryView: UIView {
@@ -32,11 +33,14 @@ class AccountSummaryView: UIView {
 
 	lazy var tableView: UITableView = {
 		let table = UITableView()
+		let refresh = UIRefreshControl()
 		table.translatesAutoresizingMaskIntoConstraints = false
 		table.showsVerticalScrollIndicator = false
 		table.register(AccountSummaryTableViewCell.self, forCellReuseIdentifier: AccountSummaryTableViewCell.identifier)
 		table.tableFooterView = UIView()
 		table.backgroundColor = .appColor
+		table.refreshControl = refresh
+		refresh.addTarget(self, action: #selector(refreshData), for: .valueChanged)
 		return table
 	}()
 }
@@ -44,6 +48,9 @@ class AccountSummaryView: UIView {
 extension AccountSummaryView {
 	@objc func logoutTapped() {
 		delegate?.didLogout()
+	}
+	@objc func refreshData() {
+		delegate?.refreshData()
 	}
 }
 

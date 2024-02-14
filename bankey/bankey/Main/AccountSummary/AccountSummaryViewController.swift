@@ -64,8 +64,14 @@ extension AccountSummaryViewController {
 }
 
 extension AccountSummaryViewController: AccountSummaryViewControllerDelegate, AccountSummaryViewModelDelegate, AccountSummaryHeaderViewModelDelegate {
+	func refreshData() {
+		accountSummaryView?.tableView.refreshControl?.beginRefreshing()
+		viewModel.fetchAccountData()
+	}
+	
 	func accountDataFetched() {
 		DispatchQueue.main.async {
+			self.accountSummaryView?.tableView.refreshControl?.endRefreshing()
 			self.accountSummaryView?.tableView.reloadData()
 		}
 	}

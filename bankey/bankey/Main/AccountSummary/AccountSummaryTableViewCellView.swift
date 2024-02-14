@@ -22,7 +22,6 @@ class AccountSummaryTableViewCellView: UIView {
 	lazy var typeLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Banking"
 		label.font = UIFont.preferredFont(forTextStyle: .caption1)
 		return label
 	}()
@@ -37,7 +36,6 @@ class AccountSummaryTableViewCellView: UIView {
 	lazy var nameLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Account Name"
 		label.font = UIFont.preferredFont(forTextStyle: .body)
 		label.adjustsFontSizeToFitWidth = true
 		return label
@@ -54,7 +52,6 @@ class AccountSummaryTableViewCellView: UIView {
 	lazy var balanceLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Current balance"
 		label.textAlignment = .right
 		label.font = UIFont.preferredFont(forTextStyle: .body)
 		label.adjustsFontSizeToFitWidth = true

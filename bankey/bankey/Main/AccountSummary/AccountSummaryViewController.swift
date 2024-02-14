@@ -9,6 +9,8 @@ import UIKit
 
 class AccountSummaryViewController: UIViewController {
 	
+	var userId = "2"
+	var isDataLoaded = false
 	private var accountSummaryView: AccountSummaryView?
 	private var viewModel: AccountSummaryViewModel = AccountSummaryViewModel()
 	private var headerViewModel: AccountSummaryHeaderViewModel = AccountSummaryHeaderViewModel()
@@ -22,7 +24,7 @@ class AccountSummaryViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		headerViewModel.fetchProfileData()
-		viewModel.fetchAccountData()
+		viewModel.fetchAccountData(userId)
 	}
 	
     override func viewDidLoad() {
@@ -30,6 +32,7 @@ class AccountSummaryViewController: UIViewController {
 		navigationItem.rightBarButtonItem = accountSummaryView?.logoutButton
 		signProtocols()
 		setupHeaderTableView()
+		viewModel.setupSkeletons()
     }
 }
 
@@ -59,6 +62,7 @@ extension AccountSummaryViewController {
 		header.welcomeLabel.text = greeting
 		header.nameLabel.text = headerViewModel.data.firstName
 		header.dateLabel.text = Date().monthDayYearString
+		isDataLoaded = true
 		accountSummaryView?.tableView.reloadData()
 	}
 }
@@ -66,12 +70,14 @@ extension AccountSummaryViewController {
 extension AccountSummaryViewController: AccountSummaryViewControllerDelegate, AccountSummaryViewModelDelegate, AccountSummaryHeaderViewModelDelegate {
 	func refreshData() {
 		accountSummaryView?.tableView.refreshControl?.beginRefreshing()
-		viewModel.fetchAccountData()
+		isDataLoaded = false
+		viewModel.fetchAccountData(userId)
 	}
 	
 	func accountDataFetched() {
 		DispatchQueue.main.async {
 			self.accountSummaryView?.tableView.refreshControl?.endRefreshing()
+			self.isDataLoaded = true
 			self.accountSummaryView?.tableView.reloadData()
 		}
 	}
@@ -93,9 +99,15 @@ extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSour
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryTableViewCell.identifier, for: indexPath) as? AccountSummaryTableViewCell
-		cell?.setupCell(with: viewModel.loadCurrentTableViewCell(indexPath: indexPath))
-		return cell ?? UITableViewCell()
+		if isDataLoaded {
+			let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryTableViewCell.identifier, for: indexPath) as? AccountSummaryTableViewCell
+			cell?.setupCell(with: viewModel.loadCurrentTableViewCell(indexPath: indexPath))
+			return cell ?? UITableViewCell()
+		} else {
+			let cell = tableView.dequeueReusableCell(withIdentifier: SkeletonCell.identifier, for: indexPath) as? SkeletonCell
+			viewModel.setupSkeletons()
+			return cell ?? UITableViewCell()
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

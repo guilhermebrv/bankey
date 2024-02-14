@@ -37,10 +37,12 @@ class AccountSummaryView: UIView {
 		table.translatesAutoresizingMaskIntoConstraints = false
 		table.showsVerticalScrollIndicator = false
 		table.register(AccountSummaryTableViewCell.self, forCellReuseIdentifier: AccountSummaryTableViewCell.identifier)
+		table.register(SkeletonCell.self, forCellReuseIdentifier: SkeletonCell.identifier)
 		table.tableFooterView = UIView()
 		table.backgroundColor = .appColor
-		table.refreshControl = refresh
+		refresh.tintColor = .appColor
 		refresh.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+		table.refreshControl = refresh
 		return table
 	}()
 }

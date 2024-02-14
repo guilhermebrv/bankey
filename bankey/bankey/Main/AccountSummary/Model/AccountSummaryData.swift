@@ -32,6 +32,10 @@ struct AccountSummaryData: Codable {
 	var amount: Decimal?
 	var createdDateTime: Date?
 	
+	static func makeSkeleton() -> AccountSummaryData {
+		return AccountSummaryData(id: "1", name: "Account name", type: .Banking, amount: 0.0, createdDateTime: Date())
+	}
+	
 	var balanceAsAttributtedString: NSAttributedString {
 		return CurrencyFormatter().makeAttributedCurrency(amount ?? 0)
 	}

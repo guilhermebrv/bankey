@@ -7,10 +7,14 @@
 
 import UIKit
 
+protocol AccountSummaryViewModelDelegate: AnyObject {
+	func accountDataFetched()
+}
+
 class AccountSummaryViewModel {
 	var userId = "2"
 	var data: [AccountSummaryData] = []
-	
+	weak var delegate: AccountSummaryViewModelDelegate?
 	
 	public var numberOfRowsInSection: Int {
 		return data.count
@@ -20,6 +24,7 @@ class AccountSummaryViewModel {
 		Task {
 			do {
 				self.data = try await AccountSummaryDataService().getAccountData(forUserId: userId)
+				delegate?.accountDataFetched()
 			} catch {
 				print(error)
 			}

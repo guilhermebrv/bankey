@@ -8,41 +8,53 @@
 import UIKit
 
 let json = """
-[
+{
+  "users": [
 	{
-		"id": "1",
-		"type": "Banking",
-		"name": "Checking Account",
-		"amount": 1000.00,
+	  "userId": "1",
+	  "name": "John"
 	},
 	{
-		"id": "2",
-		"type": "CreditCard",
-		"name": "Credit Card",
-		"amount": -1000.00,
+	  "userId": "2",
+	  "name": "Jane"
 	},
 	{
-		"id": "3",
-		"type": "Investment",
-		"name": "Investment Account",
-		"amount": 10000.00,
-	},
-]
+	  "userId": "3",
+	  "name": "Bob"
+	}
+  ]
+}
 """
 
 struct AccountSummaryData: Codable {
 	var id, name: String?
 	var type: AccountType?
 	var amount: Decimal?
-	//var createdDateTime: Date?
+	var createdDateTime: Date?
 	
 	var balanceAsAttributtedString: NSAttributedString {
 		return CurrencyFormatter().makeAttributedCurrency(amount ?? 0)
+	}
+	
+	var dateFormatted: String {
+		return createdDateTime?.monthDayYearString ?? ""
 	}
 	
 	enum AccountType: String, Codable {
 		case Banking
 		case CreditCard
 		case Investment
+	}
+}
+
+struct AccountProfileData: Codable {
+	var id: String?
+	var firstName: String?
+	var lastName: String?
+	
+	enum CodingKeys: String, CodingKey {
+		case id
+		case firstName = "first_name"
+		case lastName = "last_name"
 	}
 }

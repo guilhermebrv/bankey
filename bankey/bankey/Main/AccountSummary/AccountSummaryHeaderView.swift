@@ -10,6 +10,10 @@ import UIKit
 class AccountSummaryHeaderView: UIView {
 	@IBOutlet var contentView: UIView!
 	
+	@IBOutlet weak var welcomeLabel: UILabel!
+	@IBOutlet weak var nameLabel: UILabel!
+	@IBOutlet weak var dateLabel: UILabel!
+	
 	lazy var shakeyBell: ShakeyBellView = {
 		let bell = ShakeyBellView()
 		bell.translatesAutoresizingMaskIntoConstraints = false

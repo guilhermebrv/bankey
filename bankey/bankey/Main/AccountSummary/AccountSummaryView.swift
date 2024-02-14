@@ -36,6 +36,7 @@ class AccountSummaryView: UIView {
 		table.showsVerticalScrollIndicator = false
 		table.register(AccountSummaryTableViewCell.self, forCellReuseIdentifier: AccountSummaryTableViewCell.identifier)
 		table.tableFooterView = UIView()
+		table.backgroundColor = .appColor
 		return table
 	}()
 }

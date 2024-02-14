@@ -11,6 +11,8 @@ class AccountSummaryViewController: UIViewController {
 	
 	private var accountSummaryView: AccountSummaryView?
 	private var viewModel: AccountSummaryViewModel = AccountSummaryViewModel()
+	private var headerViewModel: AccountSummaryHeaderViewModel = AccountSummaryHeaderViewModel()
+	private var header = AccountSummaryHeaderView(frame: .zero)
 	
 	override func loadView() {
 		accountSummaryView = AccountSummaryView()
@@ -20,6 +22,7 @@ class AccountSummaryViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		registerForNotifications()
+		headerViewModel.fetchprofileData()
 		viewModel.fetchAccountData()
 	}
 	
@@ -28,7 +31,6 @@ class AccountSummaryViewController: UIViewController {
 		navigationItem.rightBarButtonItem = accountSummaryView?.logoutButton
 		signProtocols()
 		setupHeaderTableView()
-		
     }
 }
 
@@ -39,19 +41,32 @@ extension AccountSummaryViewController {
 		accountSummaryView?.delegate = self
 	}
 	private func setupHeaderTableView() {
-		let header = AccountSummaryHeaderView(frame: .zero)
-		
 		var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
 		size.width = UIScreen.main.bounds.width
 		header.frame.size = size
-		
+	
 		accountSummaryView?.tableView.tableHeaderView = header
 	}
 	private func registerForNotifications() {
+		NotificationCenter.default.addObserver(self, selector: #selector(updateHeaderUI), name: .profileDataFetched, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .dataFetched, object: nil)
 	}
 	
 	@objc func updateUI() {
+		accountSummaryView?.tableView.reloadData()
+	}
+	
+	@objc func updateHeaderUI() {
+		let hour = Calendar.current.component(.hour, from: .now)
+		var greeting = "Good morning"
+		if hour >= 12 && hour < 19 {
+			greeting = "Good afternoon"
+		} else if hour >= 19 || hour < 06 {
+			greeting = "Good evening"
+		}
+		header.welcomeLabel.text = greeting
+		header.nameLabel.text = headerViewModel.data.firstName
+		header.dateLabel.text = Date().monthDayYearString
 		accountSummaryView?.tableView.reloadData()
 	}
 }

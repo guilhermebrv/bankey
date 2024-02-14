@@ -8,7 +8,9 @@
 import UIKit
 
 class AccountSummaryViewModel {
+	var userId = "2"
 	var data: [AccountSummaryData] = []
+	
 	
 	public var numberOfRowsInSection: Int {
 		return data.count
@@ -17,7 +19,7 @@ class AccountSummaryViewModel {
 	public func fetchAccountData() {
 		Task {
 			do {
-				self.data = try await AccountSummaryDataService().getAccountData()
+				self.data = try await AccountSummaryDataService().getAccountData(forUserId: userId)
 				DispatchQueue.main.async {
 					NotificationCenter.default.post(name: .dataFetched, object: nil)
 				}

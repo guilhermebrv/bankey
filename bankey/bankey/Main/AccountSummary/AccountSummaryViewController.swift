@@ -16,6 +16,14 @@ class AccountSummaryViewController: UIViewController {
 	private var headerViewModel: AccountSummaryHeaderViewModel = AccountSummaryHeaderViewModel()
 	private var header = AccountSummaryHeaderView(frame: .zero)
 	
+	lazy var errorAlert: UIAlertController = {
+		let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+			self.viewModel.fetchAccountData(self.userId)
+		}))
+		return alert
+	}()
+	
 	override func loadView() {
 		accountSummaryView = AccountSummaryView()
 		view = accountSummaryView
@@ -67,20 +75,26 @@ extension AccountSummaryViewController {
 
 extension AccountSummaryViewController: AccountSummaryViewControllerDelegate, AccountSummaryViewModelDelegate, AccountSummaryHeaderViewModelDelegate {
 	func errorOccurred(error: NetworkError) {
-		let errorMessage: String
+		let titleAndMessage = titleAndMessage(for: error)
+		DispatchQueue.main.async {
+			self.errorAlert.title = titleAndMessage.0
+			self.errorAlert.message = titleAndMessage.1
+			self.present(self.errorAlert, animated: true)
+		}
+	}
+	
+	private func titleAndMessage(for error: NetworkError) -> (String, String) {
+		let title: String = "Error"
+		let message: String
 		switch error {
 		case .invalidURL:
-			errorMessage = "The URL provided was invalid. Please try again later."
+			message = "The URL provided was invalid. Please try again later."
 		case .invalidResponse:
-			errorMessage = "We received an invalid response from the server. Please ensure you are connected to the internet."
+			message = "We received an invalid response from the server. Please ensure you are connected to the internet."
 		case .invalidData:
-			errorMessage = "The data received from the server was invalid. Please try again later."
+			message = "The data received from the server was invalid. Please try again later."
 		}
-		DispatchQueue.main.async {
-			ErrorAlert(controller: self).showAlert(title: "Error in network operation", message: errorMessage) {
-				self.viewModel.fetchAccountData(self.userId)
-			}
-		}
+		return (title, message)
 	}
 	
 	func refreshData() {
@@ -136,5 +150,12 @@ extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSour
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		//
+	}
+}
+
+// unit testing
+extension AccountSummaryViewController {
+	func titleAndMessageForTesting(for error: NetworkError) -> (String, String) {
+		return titleAndMessage(for: error)
 	}
 }

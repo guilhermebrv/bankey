@@ -15,6 +15,7 @@ protocol AccountSummaryViewModelDelegate: AnyObject {
 class AccountSummaryViewModel {
 	var data: [AccountSummaryData] = []
 	weak var delegate: AccountSummaryViewModelDelegate?
+	var accountManager: AccountManager = AccountSummaryDataManager()
 	
 	public var numberOfRowsInSection: Int {
 		return data.count
@@ -23,7 +24,7 @@ class AccountSummaryViewModel {
 	public func fetchAccountData(_ userId: String) {
 		Task {
 			do {
-				self.data = try await AccountSummaryDataService().getAccountData(forUserId: userId)
+				self.data = try await accountManager.getAccountData(forUserId: userId)
 				delegate?.accountDataFetched()
 			} catch let error as NetworkError {
 				delegate?.errorOccurred(error: error)

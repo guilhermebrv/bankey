@@ -15,11 +15,12 @@ class AccountSummaryHeaderViewModel {
 	var data: AccountProfileData = AccountProfileData()
 	var userId = "2"
 	weak var delegate: AccountSummaryHeaderViewModelDelegate?
+	var accountManager: AccountManager = AccountSummaryDataManager()
 	
 	public func fetchProfileData() {
 		Task {
 			do {
-				self.data = try await AccountSummaryDataService().getProfileData(forUserId: userId)
+				self.data = try await accountManager.getProfileData(forUserId: userId)
 				delegate?.profileDataFetched()
 			} catch {
 				print(error)

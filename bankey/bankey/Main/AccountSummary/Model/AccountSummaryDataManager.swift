@@ -1,5 +1,5 @@
 //
-//  AccountSummaryDataService.swift
+//  AccountSummaryDataManager.swift
 //  bankey
 //
 //  Created by Guilherme Viana on 13/02/2024.
@@ -7,13 +7,18 @@
 
 import UIKit
 
+protocol AccountManager: AnyObject {
+	func getAccountData(forUserId userId: String) async throws -> [AccountSummaryData]
+	func getProfileData(forUserId userId: String) async throws -> AccountProfileData
+}
+
 enum NetworkError: Error {
 	case invalidURL
 	case invalidResponse
 	case invalidData
 }
 
-class AccountSummaryDataService {
+class AccountSummaryDataManager: AccountManager {
 	public func getAccountData(forUserId userId: String) async throws -> [AccountSummaryData] {
 		let endpoint = "https://fierce-retreat-36855.herokuapp.com/banjkey/profile/\(userId)/accounts"
 		

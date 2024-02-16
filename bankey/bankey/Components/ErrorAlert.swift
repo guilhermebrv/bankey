@@ -14,10 +14,12 @@ class ErrorAlert {
 		self.controller = controller
 	}
 	
-	public func showAlert(title: String, message: String) {
+	public func showAlert(title: String, message: String, confirm: @escaping () -> Void) {
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		
-		let confirmAction = UIAlertAction(title: "Ok", style: .default)
+		let confirmAction = UIAlertAction(title: "Ok", style: .default) { _ in
+			confirm()
+		}
 		
 		alertController.addAction(confirmAction)
 		

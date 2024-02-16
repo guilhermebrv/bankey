@@ -9,7 +9,7 @@ import UIKit
 
 protocol AccountSummaryViewModelDelegate: AnyObject {
 	func accountDataFetched()
-	func errorOccurred(error: Error)
+	func errorOccurred(error: NetworkError)
 }
 
 class AccountSummaryViewModel {
@@ -25,7 +25,7 @@ class AccountSummaryViewModel {
 			do {
 				self.data = try await AccountSummaryDataService().getAccountData(forUserId: userId)
 				delegate?.accountDataFetched()
-			} catch {
+			} catch let error as NetworkError {
 				delegate?.errorOccurred(error: error)
 			}
 		}

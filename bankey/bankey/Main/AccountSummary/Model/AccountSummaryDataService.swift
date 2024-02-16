@@ -15,7 +15,7 @@ enum NetworkError: Error {
 
 class AccountSummaryDataService {
 	public func getAccountData(forUserId userId: String) async throws -> [AccountSummaryData] {
-		let endpoint = "https://fierce-retreat-36855.herokuapp.cofm/bankey/profile/\(userId)/accounts"
+		let endpoint = "https://fierce-retreat-36855.herokuapp.com/banjkey/profile/\(userId)/accounts"
 		
 		guard let url = URL(string: endpoint) else {
 			throw NetworkError.invalidURL

@@ -66,9 +66,20 @@ extension AccountSummaryViewController {
 }
 
 extension AccountSummaryViewController: AccountSummaryViewControllerDelegate, AccountSummaryViewModelDelegate, AccountSummaryHeaderViewModelDelegate {
-	func errorOccurred(error: Error) {
+	func errorOccurred(error: NetworkError) {
+		let errorMessage: String
+		switch error {
+		case .invalidURL:
+			errorMessage = "The URL provided was invalid. Please try again later."
+		case .invalidResponse:
+			errorMessage = "We received an invalid response from the server. Please ensure you are connected to the internet."
+		case .invalidData:
+			errorMessage = "The data received from the server was invalid. Please try again later."
+		}
 		DispatchQueue.main.async {
-			ErrorAlert(controller: self).showAlert(title: "Error in network operation", message: error.localizedDescription)
+			ErrorAlert(controller: self).showAlert(title: "Error in network operation", message: errorMessage) {
+				self.viewModel.fetchAccountData(self.userId)
+			}
 		}
 	}
 	

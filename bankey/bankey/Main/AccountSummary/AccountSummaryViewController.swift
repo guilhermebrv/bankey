@@ -32,7 +32,6 @@ class AccountSummaryViewController: UIViewController {
 		navigationItem.rightBarButtonItem = accountSummaryView?.logoutButton
 		signProtocols()
 		setupHeaderTableView()
-		viewModel.setupSkeletons()
     }
 }
 
@@ -62,16 +61,24 @@ extension AccountSummaryViewController {
 		header.welcomeLabel.text = greeting
 		header.nameLabel.text = headerViewModel.data.firstName
 		header.dateLabel.text = Date().monthDayYearString
-		isDataLoaded = true
 		accountSummaryView?.tableView.reloadData()
 	}
 }
 
 extension AccountSummaryViewController: AccountSummaryViewControllerDelegate, AccountSummaryViewModelDelegate, AccountSummaryHeaderViewModelDelegate {
+	func errorOccurred(error: Error) {
+		DispatchQueue.main.async {
+			ErrorAlert(controller: self).showAlert(title: "Error in network operation", message: error.localizedDescription)
+		}
+	}
+	
 	func refreshData() {
 		accountSummaryView?.tableView.refreshControl?.beginRefreshing()
 		isDataLoaded = false
-		viewModel.fetchAccountData(userId)
+		accountSummaryView?.tableView.reloadData()
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+			self.viewModel.fetchAccountData(self.userId)
+		}
 	}
 	
 	func accountDataFetched() {
@@ -95,7 +102,10 @@ extension AccountSummaryViewController: AccountSummaryViewControllerDelegate, Ac
 
 extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		viewModel.numberOfRowsInSection
+		if isDataLoaded {
+			return viewModel.numberOfRowsInSection
+		}
+		return 8
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -105,7 +115,6 @@ extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSour
 			return cell ?? UITableViewCell()
 		} else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: SkeletonCell.identifier, for: indexPath) as? SkeletonCell
-			viewModel.setupSkeletons()
 			return cell ?? UITableViewCell()
 		}
 	}

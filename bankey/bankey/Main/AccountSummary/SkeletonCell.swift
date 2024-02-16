@@ -28,7 +28,6 @@ class SkeletonCell: UITableViewCell {
 	let balanceLayer = CAGradientLayer()
 	let balanceAmountLayer = CAGradientLayer()
 	
-	static let reuseID = "SkeletonCell"
 	static let rowHeight: CGFloat = 112
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

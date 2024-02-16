@@ -9,19 +9,15 @@ import UIKit
 
 protocol AccountSummaryViewModelDelegate: AnyObject {
 	func accountDataFetched()
+	func errorOccurred(error: Error)
 }
 
 class AccountSummaryViewModel {
-	var data: [AccountSummaryData]?
+	var data: [AccountSummaryData] = []
 	weak var delegate: AccountSummaryViewModelDelegate?
 	
 	public var numberOfRowsInSection: Int {
-		return data?.count ?? 10
-	}
-	
-	public func setupSkeletons() {
-		let row = AccountSummaryData.makeSkeleton()
-		data = Array(repeating: row, count: 10)
+		return data.count
 	}
 	
 	public func fetchAccountData(_ userId: String) {
@@ -30,17 +26,17 @@ class AccountSummaryViewModel {
 				self.data = try await AccountSummaryDataService().getAccountData(forUserId: userId)
 				delegate?.accountDataFetched()
 			} catch {
-				print(error)
+				delegate?.errorOccurred(error: error)
 			}
 		}
 	}
 	
 	public func loadCurrentTableViewCell(indexPath: IndexPath) -> AccountSummaryData {
-		return data?[indexPath.row] ?? AccountSummaryData()
+		return data[indexPath.row]
 	}
 	
 	public var heightForRowAt: CGFloat {
-		return 90
+		return 105
 	}
 	
 }

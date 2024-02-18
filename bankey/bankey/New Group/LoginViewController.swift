@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginViewControllerDelegate: AnyObject {
 	func didLogin()
+	func didResetPassword()
 }
 
 class LoginViewController: UIViewController {
@@ -57,7 +58,11 @@ extension LoginViewController: UITextFieldDelegate {
 	}
 }
 
-extension LoginViewController: LoginViewProtocol {	
+extension LoginViewController: LoginViewProtocol {
+	func resetPasswordTapped() {
+		self.delegate?.didResetPassword()
+	}
+	
 	func signInTapped() {
 		login()
 	}

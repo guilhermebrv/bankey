@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	let loginViewController = LoginViewController()
 	let onboardingContainerViewController = OnboardingContainerViewController()
 	let mainViewController = MainViewController()
+	let resetPasswordViewController = ResetPasswordViewController()
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		window = UIWindow(frame: UIScreen.main.bounds)
@@ -31,6 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: LoginViewControllerDelegate, OnboardingContainerViewControllerDelegate {
+	func didResetPassword() {
+		loginViewController.present(resetPasswordViewController, animated: true)
+	//	setRootViewController(resetPasswordViewController, animated: true)
+	}
+	
 	@objc func didLogout() {
 		setRootViewController(loginViewController, animated: true)
 	}

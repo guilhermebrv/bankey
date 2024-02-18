@@ -48,6 +48,9 @@
 		2BC02B662B7246CC00D0B61E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC02B652B7246CC00D0B61E /* LoginView.swift */; };
 		2BD03BF22B7FAF1C0057C299 /* AccountSummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD03BF12B7FAF1C0057C299 /* AccountSummaryViewControllerTests.swift */; };
 		2BF76AE52B7F6FA500C44BEB /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF76AE42B7F6FA500C44BEB /* ErrorAlert.swift */; };
+		2BF9CAD42B827BFD00314D2D /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9CAD32B827BFD00314D2D /* ResetPasswordView.swift */; };
+		2BF9CADA2B827C2C00314D2D /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9CAD92B827C2C00314D2D /* ResetPasswordViewController.swift */; };
+		2BF9CADC2B827C3900314D2D /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9CADB2B827C3900314D2D /* ResetPasswordViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,9 @@
 		2BC02B652B7246CC00D0B61E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2BD03BF12B7FAF1C0057C299 /* AccountSummaryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewControllerTests.swift; sourceTree = "<group>"; };
 		2BF76AE42B7F6FA500C44BEB /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		2BF9CAD32B827BFD00314D2D /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		2BF9CAD92B827C2C00314D2D /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		2BF9CADB2B827C3900314D2D /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +325,7 @@
 		2BC02B622B72458100D0B61E /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				2BF9CAD52B827C0300314D2D /* ResetPassword */,
 				2BC02B522B7240CF00D0B61E /* LoginViewController.swift */,
 				2BC02B652B7246CC00D0B61E /* LoginView.swift */,
 			);
@@ -334,6 +341,40 @@
 				2BC02B5C2B7240D400D0B61E /* Info.plist */,
 			);
 			name = Supporting;
+			sourceTree = "<group>";
+		};
+		2BF9CAD52B827C0300314D2D /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				2BF9CAD82B827C1B00314D2D /* View Model */,
+				2BF9CAD72B827C1100314D2D /* View Controller */,
+				2BF9CAD62B827C0C00314D2D /* View */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
+		2BF9CAD62B827C0C00314D2D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2BF9CAD32B827BFD00314D2D /* ResetPasswordView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2BF9CAD72B827C1100314D2D /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2BF9CAD92B827C2C00314D2D /* ResetPasswordViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		2BF9CAD82B827C1B00314D2D /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				2BF9CADB2B827C3900314D2D /* ResetPasswordViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,6 +507,7 @@
 				2B57F0122B764017008D0F5A /* MoveMoneyViewModel.swift in Sources */,
 				2BBD97CC2B73AA7E00D65FCA /* OnboardingViewController.swift in Sources */,
 				2BBD97CE2B73AABB00D65FCA /* OnboardingView.swift in Sources */,
+				2BF9CAD42B827BFD00314D2D /* ResetPasswordView.swift in Sources */,
 				2B8F2CE52B7D2590004D68CB /* SkeletonCell.swift in Sources */,
 				2B57F0202B768D26008D0F5A /* AccountSummaryTableViewCell.swift in Sources */,
 				2B88DD122B7A5EA50093E5C0 /* Extension + UITextField.swift in Sources */,
@@ -475,7 +517,9 @@
 				2B2355DD2B75462900AC9356 /* Extension + UIViewController.swift in Sources */,
 				2B8F2CD32B7CD442004D68CB /* AccountSummaryHeaderViewModel.swift in Sources */,
 				2B564CD82B77CAEF00382A2E /* CurrencyFormatter.swift in Sources */,
+				2BF9CADA2B827C2C00314D2D /* ResetPasswordViewController.swift in Sources */,
 				2BC02B4F2B7240CF00D0B61E /* AppDelegate.swift in Sources */,
+				2BF9CADC2B827C3900314D2D /* ResetPasswordViewModel.swift in Sources */,
 				2BBD97CA2B739CC200D65FCA /* OnboardingContainerViewController.swift in Sources */,
 				2B57F0182B76414B008D0F5A /* MoreViewModel.swift in Sources */,
 				2BA38B552B75457100B1C28C /* Extension + UIColor.swift in Sources */,

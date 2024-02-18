@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginViewProtocol: AnyObject {
 	func signInTapped()
+	func resetPasswordTapped()
 }
 
 class LoginView: UIView {
@@ -85,7 +86,7 @@ class LoginView: UIView {
 		textField.isSecureTextEntry = true
 		textField.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 		textField.enablePasswordToggle()
-		textField.rightViewMode = .always
+		//textField.rightViewMode = .always
 		return textField
 	}()
 	
@@ -104,6 +105,19 @@ class LoginView: UIView {
 		return button
 	}()
 	
+	lazy var forgotPasswordButton: UIButton = {
+		let button = UIButton(type: .system)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.configuration = .plain()
+		let titleAttributes: [NSAttributedString.Key: Any] = [
+			.font: UIFont.systemFont(ofSize: 20, weight: .medium)
+		]
+	   let attributedTitle = NSAttributedString(string: "Reset your password", attributes: titleAttributes)
+	   button.setAttributedTitle(attributedTitle, for: .normal)
+		button.addTarget(self, action: #selector(resetPasswordTapped), for: .primaryActionTriggered)
+		return button
+	}()
+	
 	lazy var errorMessageLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -119,6 +133,9 @@ class LoginView: UIView {
 extension LoginView {
 	@objc public func signInTapped(sender: UIButton) {
 		delegate?.signInTapped()
+	}
+	@objc public func resetPasswordTapped(sender: UIButton) {
+		delegate?.resetPasswordTapped()
 	}
 }
 
@@ -170,6 +187,7 @@ extension LoginView {
 		addSubview(dividerView)
 		addSubview(passwordTextField)
 		addSubview(loginButton)
+		addSubview(forgotPasswordButton)
 		addSubview(errorMessageLabel)
 	}
 	
@@ -207,8 +225,11 @@ extension LoginView {
 			loginButton.leadingAnchor.constraint(equalTo: bgView.leadingAnchor),
 			loginButton.trailingAnchor.constraint(equalTo: bgView.trailingAnchor),
 			
-			errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: loginButton.bottomAnchor, multiplier: 2),
-			errorMessageLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+			forgotPasswordButton.topAnchor.constraint(equalToSystemSpacingBelow: loginButton.bottomAnchor, multiplier: 2),
+			forgotPasswordButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+			
+			errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: forgotPasswordButton.bottomAnchor, multiplier: 2),
+			errorMessageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
 		])
 	}
 }

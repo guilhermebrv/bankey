@@ -18,6 +18,22 @@ extension UITextField {
 		self.rightViewMode = .always
 	}
 	
+	func addLockButton() {
+		let lockbutton = UIButton(type: .custom)
+		lockbutton.setImage(UIImage(systemName: "lock.fill"), for: .normal)
+		lockbutton.sizeToFit()
+		lockbutton.frame = CGRect(x: 0, y: 0, width: lockbutton.frame.width, height: lockbutton.frame.height)
+
+		
+		let customView = UIView(frame: CGRect(x: 0, y: 0, width: lockbutton.frame.width + 20, height: lockbutton.frame.height))
+		customView.addSubview(lockbutton)
+		
+		lockbutton.frame = CGRect(x: 10, y: 0, width: lockbutton.frame.width, height: lockbutton.frame.height)
+		
+		self.leftView = customView
+		self.leftViewMode = .always
+	}
+	
 	@objc func togglePasswordView(sender: UIButton) {
 		isSecureTextEntry.toggle()
 		sender.isSelected.toggle()

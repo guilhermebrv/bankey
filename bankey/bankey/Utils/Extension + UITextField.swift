@@ -25,10 +25,10 @@ extension UITextField {
 		lockbutton.frame = CGRect(x: 0, y: 0, width: lockbutton.frame.width, height: lockbutton.frame.height)
 
 		
-		let customView = UIView(frame: CGRect(x: 0, y: 0, width: lockbutton.frame.width + 20, height: lockbutton.frame.height))
+		let customView = UIView(frame: CGRect(x: 0, y: 0, width: lockbutton.frame.width + 10, height: lockbutton.frame.height))
 		customView.addSubview(lockbutton)
 		
-		lockbutton.frame = CGRect(x: 10, y: 0, width: lockbutton.frame.width, height: lockbutton.frame.height)
+		lockbutton.frame = CGRect(x: 0, y: 0, width: lockbutton.frame.width, height: lockbutton.frame.height)
 		
 		self.leftView = customView
 		self.leftViewMode = .always

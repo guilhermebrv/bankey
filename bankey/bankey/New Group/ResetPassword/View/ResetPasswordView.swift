@@ -8,11 +8,10 @@
 import UIKit
 
 protocol ResetPasswordViewDelegate: AnyObject {
-	
+	func textFieldEditingChanged(_ sender: UITextField)
 }
 
 class ResetPasswordView: UIView {
-	
 	weak var delegate: ResetPasswordViewDelegate?
 
 	override init(frame: CGRect) {
@@ -40,6 +39,7 @@ class ResetPasswordView: UIView {
 		textField.keyboardType = .asciiCapable
 		textField.enablePasswordToggle()
 		textField.addLockButton()
+		textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
 		return textField
 	}()
 	
@@ -56,7 +56,7 @@ class ResetPasswordView: UIView {
 		label.textColor = .systemRed
 		label.numberOfLines = 0
 		label.text = "Your password must meet the requirements below"
-		label.isHidden = false
+		label.isHidden = true
 		return label
 	}()
 	
@@ -159,7 +159,7 @@ class ResetPasswordView: UIView {
 		label.textColor = .systemRed
 		label.numberOfLines = 0
 		label.text = "Your password must meet the requirements above"
-		label.isHidden = false
+		label.isHidden = true
 		return label
 	}()
 	
@@ -176,10 +176,16 @@ class ResetPasswordView: UIView {
 		let stack = UIStackView()
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .vertical
-		stack.spacing = 40
+		stack.spacing = 10
 		return stack
 	}()
 	
+}
+
+extension ResetPasswordView {
+	@objc func textFieldEditingChanged(_ sender: UITextField) {
+		delegate?.textFieldEditingChanged(sender)
+	}
 }
 
 extension ResetPasswordView {

@@ -10,7 +10,7 @@ import UIKit
 class PasswordCriteriaView: UIView {
 	let stackView = UIStackView()
 	var criteriaLabel = UILabel()
-	let imageView = UIImageView()
+	var imageView = UIImageView()
 	
 	let circleImage = UIImage(systemName: "circle")?.withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
 	let checkmarkImage = UIImage(systemName: "checkmark.circle")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)

@@ -21,3 +21,15 @@ class ResetPasswordViewController: UIViewController {
     }
     
 }
+
+
+//var isCriteriaMet: Bool = false {
+//	didSet {
+//		imageView.image = isCriteriaMet? checkmarkImage : xmarkImage
+//	}
+//}
+
+//func reset() {
+//	isCriteriamet = false
+//	imageView.image = circleImage
+//}

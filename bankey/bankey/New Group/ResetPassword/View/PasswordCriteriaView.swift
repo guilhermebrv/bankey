@@ -12,9 +12,9 @@ class PasswordCriteriaView: UIView {
 	var criteriaLabel = UILabel()
 	var imageView = UIImageView()
 	
-	let circleImage = UIImage(systemName: "circle")?.withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
-	let checkmarkImage = UIImage(systemName: "checkmark.circle")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
-	let xmarkImage = UIImage(systemName: "xmark.circle")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+	static let circleImage = UIImage(systemName: "circle")?.withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+	static let checkmarkImage = UIImage(systemName: "checkmark.circle")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+	static let xmarkImage = UIImage(systemName: "xmark.circle")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
 	
 	init(criteria: String) {
 		super.init(frame: .zero)
@@ -45,7 +45,7 @@ extension PasswordCriteriaView {
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		criteriaLabel.translatesAutoresizingMaskIntoConstraints = false
 		 
-		imageView.image = circleImage
+		imageView.image = PasswordCriteriaView.circleImage
 		imageView.contentMode = .scaleAspectFit
 		imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 		

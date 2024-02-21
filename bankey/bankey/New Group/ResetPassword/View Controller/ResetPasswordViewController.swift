@@ -14,6 +14,7 @@ protocol ResetPasswordViewControllerDelegate: AnyObject {
 class ResetPasswordViewController: UIViewController {
 	
 	private let resetView: ResetPasswordView = ResetPasswordView()
+	private var shouldResetCriteria: Bool = true
 	
 	override func loadView() {
 		view = resetView
@@ -37,33 +38,50 @@ extension ResetPasswordViewController {
 
 extension ResetPasswordViewController: ResetPasswordViewDelegate, UITextFieldDelegate {
 	func textFieldEditingChanged(_ sender: UITextField) {
-		if sender == resetView.newPasswordTextField {
-			if PasswordCriteria.lengthCriteriaMet(sender.text ?? "") && PasswordCriteria.noSpaceCriteriaMet(sender.text ?? "") {
-				resetView.criteriaView.imageView.image = resetView.criteriaView.checkmarkImage ?? UIImage()
-			} else {
-				resetView.criteriaView.imageView.image = resetView.criteriaView.xmarkImage ?? UIImage()
-			}
+		if sender === resetView.newPasswordTextField {
+			updateDisplay(sender.text ?? "")
+		}
+	}
+}
+
+extension ResetPasswordViewController {
+	private func updateDisplay(_ text: String) {
+		let lengthAndNoSpaceMet = PasswordCriteria.lengthAndNoSpaceMet(text)
+		let uppercaseMet = PasswordCriteria.uppercaseMet(text)
+		let lowercaseMet = PasswordCriteria.lowercaseMet(text)
+		let digitsMet = PasswordCriteria.digitsMet(text)
+		let specialCharactersMet = PasswordCriteria.specialCharactersMet(text)
+		
+		if shouldResetCriteria {
+			resetView.criteriaView.imageView.image = lengthAndNoSpaceMet ? PasswordCriteriaView.checkmarkImage : PasswordCriteriaView.circleImage
+			resetView.criteriaView2.imageView.image = uppercaseMet ? PasswordCriteriaView.checkmarkImage : PasswordCriteriaView.circleImage
+			resetView.criteriaView3.imageView.image = lowercaseMet ? PasswordCriteriaView.checkmarkImage : PasswordCriteriaView.circleImage
+			resetView.criteriaView4.imageView.image = digitsMet ? PasswordCriteriaView.checkmarkImage : PasswordCriteriaView.circleImage
+			resetView.criteriaView5.imageView.image = specialCharactersMet ? PasswordCriteriaView.checkmarkImage : PasswordCriteriaView.circleImage
 		}
 	}
 }
 
 struct PasswordCriteria {
+	static func lengthAndNoSpaceMet(_ text: String) -> Bool {
+		return lengthCriteriaMet(text) && noSpaceCriteriaMet(text)
+	}
 	static func lengthCriteriaMet(_ text: String) -> Bool {
 		return text.count >= 8 && text.count <= 32
 	}
 	static func noSpaceCriteriaMet(_ text: String) -> Bool {
 		return !text.contains(" ")
 	}
+	static func uppercaseMet(_ text: String) -> Bool {
+		return text.range(of: "[A-Z]+", options: .regularExpression) != nil
+	}
+	static func lowercaseMet(_ text: String) -> Bool {
+		return text.range(of: "[a-z]+", options: .regularExpression) != nil
+	}
+	static func digitsMet(_ text: String) -> Bool {
+		return text.range(of: "[0-9]+", options: .regularExpression) != nil
+	}
+	static func specialCharactersMet(_ text: String) -> Bool {
+		return text.range(of: "[\\W]+", options: .regularExpression) != nil
+	}
 }
-
-
-//var isCriteriaMet: Bool = false {
-//	didSet {
-//		imageView.image = isCriteriaMet? checkmarkImage : xmarkImage
-//	}
-//}
-
-//func reset() {
-//	isCriteriamet = false
-//	imageView.image = circleImage
-//}

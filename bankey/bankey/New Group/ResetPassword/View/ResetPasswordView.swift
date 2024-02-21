@@ -238,7 +238,7 @@ extension ResetPasswordView {
 			passwordMessage.leadingAnchor.constraint(equalTo: newPasswordTextField.leadingAnchor),
 			passwordMessage.trailingAnchor.constraint(equalTo: newPasswordTextField.trailingAnchor),
 			
-			passwordCriteriaView.heightAnchor.constraint(equalToConstant: 220),
+			passwordCriteriaView.heightAnchor.constraint(equalToConstant: 215),
 			passwordCriteriaView.leadingAnchor.constraint(equalTo: enterPasswordView.leadingAnchor),
 			passwordCriteriaView.trailingAnchor.constraint(equalTo: enterPasswordView.trailingAnchor),
 			

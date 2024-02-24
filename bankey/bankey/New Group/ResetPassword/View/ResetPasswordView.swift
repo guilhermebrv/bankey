@@ -9,6 +9,7 @@ import UIKit
 
 protocol ResetPasswordViewDelegate: AnyObject {
 	func textFieldEditingChanged(_ sender: UITextField)
+	func textFieldEditingDidEnd(_ sender: UITextField)
 }
 
 class ResetPasswordView: UIView {
@@ -40,6 +41,7 @@ class ResetPasswordView: UIView {
 		textField.enablePasswordToggle()
 		textField.addLockButton()
 		textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+		textField.addTarget(self, action: #selector(textFieldEditingDidEnd), for: .editingDidEnd)
 		return textField
 	}()
 	
@@ -185,6 +187,9 @@ class ResetPasswordView: UIView {
 extension ResetPasswordView {
 	@objc func textFieldEditingChanged(_ sender: UITextField) {
 		delegate?.textFieldEditingChanged(sender)
+	}
+	@objc func textFieldEditingDidEnd(_ sender: UITextField) {
+		delegate?.textFieldEditingDidEnd(sender)
 	}
 }
 

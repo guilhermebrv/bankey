@@ -14,7 +14,7 @@ protocol ResetPasswordViewControllerDelegate: AnyObject {
 class ResetPasswordViewController: UIViewController {
 	
 	private let resetView: ResetPasswordView = ResetPasswordView()
-	private var shouldResetCriteria: Bool = true
+	private var isCriteriaMet: Bool = true
 	typealias CustomValidation = (_ textValue: String?) -> (Bool, String)?
 	var customValidation: CustomValidation?
 	
@@ -46,10 +46,22 @@ extension ResetPasswordViewController {
 
 extension ResetPasswordViewController: ResetPasswordViewDelegate, UITextFieldDelegate {
 	func textFieldEditingDidEnd(_ sender: UITextField) {
-		setupNewPassword()
+		if sender === resetView.newPasswordTextField {
+			setupNewPassword()
+			_ = validate()
+		} else if sender === resetView.renewPasswordTextField {
+			if resetView.newPasswordTextField.text != resetView.renewPasswordTextField.text {
+				resetView.repasswordMessage.text = "Passwords do not match"
+				resetView.repasswordMessage.isHidden = false
+			} else {
+				resetView.repasswordMessage.isHidden = true
+			}
+		}
 	}
 	func textFieldEditingChanged(_ sender: UITextField) {
 		if sender === resetView.newPasswordTextField {
+			isCriteriaMet = true
+			clearError()
 			updateDisplay(sender.text ?? "")
 		}
 	}
@@ -72,7 +84,7 @@ extension ResetPasswordViewController {
 		let digitsMet = PasswordCriteria.digitsMet(text)
 		let specialCharactersMet = PasswordCriteria.specialCharactersMet(text)
 		
-		if shouldResetCriteria {
+		if isCriteriaMet {
 			resetView.criteriaView.imageView.image = lengthAndNoSpaceMet ? PasswordCriteriaView.checkmarkImage : PasswordCriteriaView.circleImage
 			resetView.criteriaView2.imageView.image = uppercaseMet ? PasswordCriteriaView.checkmarkImage : PasswordCriteriaView.circleImage
 			resetView.criteriaView3.imageView.image = lowercaseMet ? PasswordCriteriaView.checkmarkImage : PasswordCriteriaView.circleImage
@@ -89,36 +101,38 @@ extension ResetPasswordViewController {
 	private func setupNewPassword() {
 		let newPasswordValidation: CustomValidation = { text in
 			
-		guard let text = text, !text.isEmpty else {
-			self.shouldResetCriteria = false
-			self.updateDisplay(text ?? "")
-			return (false, "Enter your password")
-		}
-		
-		let validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+\\/-:;.,[]"
-		let invalidChars = CharacterSet(charactersIn: validChars).inverted
-		guard text.rangeOfCharacter(from: invalidChars) == nil else {
-			self.shouldResetCriteria = false
-			self.updateDisplay(text)
-			return (false, "Password contains invalid characters")
-		}
-		
-		self.shouldResetCriteria = true
-		self.updateDisplay(text)
-		return (true, "")
-		}
-	}
-	private func setupConfirmPassword() {
-		let confirmPasswordValidation: CustomValidation = { text in
-			guard let text = text, !text.isEmpty else {
+			guard let text, !text.isEmpty else {
+				self.isCriteriaMet = false
+				self.updateDisplay(text ?? "")
 				return (false, "Enter your password")
 			}
 			
-			guard text == self.resetView.newPasswordTextField.text else {
-				return (false, "Passwords do not match")
+			let validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+\\/-:;.,[]{}"
+			let invalidChars = CharacterSet(charactersIn: validChars).inverted
+			guard text.rangeOfCharacter(from: invalidChars) == nil else {
+				self.isCriteriaMet = false
+				self.updateDisplay(text)
+				return (false, "Password contains invalid characters")
 			}
+			
+			if text.count < 8 || text.count > 32 {
+				self.isCriteriaMet = false
+				self.updateDisplay(text)
+				return (false, "Password must be between 8 and 32 characters")
+			}
+			
+			if self.validateMinCriteria(text) {
+				self.isCriteriaMet = true
+				self.updateDisplay(text)
+			} else {
+				self.isCriteriaMet = false
+				self.updateDisplay(text)
+				return (false, "Password does not meet the minimum criteria")
+			}
+			
 			return (true, "")
 		}
+		customValidation = newPasswordValidation
 	}
 }
 
@@ -138,5 +152,16 @@ extension ResetPasswordViewController {
 	private func clearError() {
 		resetView.passwordMessage.isHidden = true
 		resetView.passwordMessage.text = ""
+	}
+	private func validateMinCriteria(_ text: String) -> Bool {
+		let uppercaseMet = PasswordCriteria.uppercaseMet(text)
+		let lowercaseMet = PasswordCriteria.lowercaseMet(text)
+		let digitsMet = PasswordCriteria.digitsMet(text)
+		let specialCharactersMet = PasswordCriteria.specialCharactersMet(text)
+		
+		let checkable = [uppercaseMet, lowercaseMet, digitsMet, specialCharactersMet]
+		let metCriteria = checkable.filter { $0 }
+		
+		return metCriteria.count >= 3
 	}
 }

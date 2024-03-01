@@ -360,8 +360,8 @@
 		2BF9CAD62B827C0C00314D2D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2BF9CAD32B827BFD00314D2D /* ResetPasswordView.swift */,
 				2BB96C182B84B56C0074837B /* PasswordCriteriaView.swift */,
+				2BF9CAD32B827BFD00314D2D /* ResetPasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

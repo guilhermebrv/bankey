@@ -50,7 +50,10 @@ extension ResetPasswordViewController: ResetPasswordViewDelegate, UITextFieldDel
 			setupNewPassword()
 			_ = validate()
 		} else if sender === resetView.renewPasswordTextField {
-			if resetView.newPasswordTextField.text != resetView.renewPasswordTextField.text {
+			if resetView.newPasswordTextField.text?.isEmpty == true {
+				resetView.repasswordMessage.text = "Enter your password above"
+				resetView.repasswordMessage.isHidden = false
+			} else if resetView.newPasswordTextField.text != resetView.renewPasswordTextField.text {
 				resetView.repasswordMessage.text = "Passwords do not match"
 				resetView.repasswordMessage.isHidden = false
 			} else {

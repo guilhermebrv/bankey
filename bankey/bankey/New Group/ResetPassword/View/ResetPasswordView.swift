@@ -143,6 +143,7 @@ class ResetPasswordView: UIView {
 		textField.attributedPlaceholder = NSAttributedString(string: "Re-enter new password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel])
 		textField.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 		textField.keyboardType = .asciiCapable
+		textField.addTarget(self, action: #selector(textFieldEditingDidEnd), for: .editingDidEnd)
 		textField.enablePasswordToggle()
 		textField.addLockButton()
 		return textField

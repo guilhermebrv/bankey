@@ -10,6 +10,7 @@ import UIKit
 protocol ResetPasswordViewDelegate: AnyObject {
 	func textFieldEditingChanged(_ sender: UITextField)
 	func textFieldEditingDidEnd(_ sender: UITextField)
+	func resetButtonTapped()
 }
 
 class ResetPasswordView: UIView {
@@ -172,6 +173,8 @@ class ResetPasswordView: UIView {
 		button.configuration = .filled()
 		button.setTitle("Reset password", for: [])
 		button.configuration?.buttonSize = .large
+		button.addTarget(self, action: #selector(resetButtonTapped), for: .primaryActionTriggered)
+		button.isEnabled = false
 		return button
 	}()
 	
@@ -191,6 +194,9 @@ extension ResetPasswordView {
 	}
 	@objc func textFieldEditingDidEnd(_ sender: UITextField) {
 		delegate?.textFieldEditingDidEnd(sender)
+	}
+	@objc func resetButtonTapped() {
+		delegate?.resetButtonTapped()
 	}
 }
 

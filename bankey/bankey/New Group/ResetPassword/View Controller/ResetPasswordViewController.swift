@@ -32,6 +32,7 @@ class ResetPasswordViewController: UIViewController {
 		view.backgroundColor = .systemBackground
 		signProtocols()
 		dismissKeyBoard()
+		setupKeyboardHiding()
     }
     
 }
@@ -45,7 +46,12 @@ extension ResetPasswordViewController {
 }
 
 extension ResetPasswordViewController: ResetPasswordViewDelegate, UITextFieldDelegate {
+	func resetButtonTapped() {
+		
+	}
+	
 	func textFieldEditingDidEnd(_ sender: UITextField) {
+		resetView.resetButton.isEnabled = false
 		if sender === resetView.newPasswordTextField {
 			setupNewPassword()
 			_ = validate()
@@ -58,6 +64,7 @@ extension ResetPasswordViewController: ResetPasswordViewDelegate, UITextFieldDel
 				resetView.repasswordMessage.isHidden = false
 			} else {
 				resetView.repasswordMessage.isHidden = true
+				resetView.resetButton.isEnabled = true
 			}
 		}
 	}
@@ -166,5 +173,31 @@ extension ResetPasswordViewController {
 		let metCriteria = checkable.filter { $0 }
 		
 		return metCriteria.count >= 3
+	}
+}
+
+extension ResetPasswordViewController {
+	private func setupKeyboardHiding() {
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+	}
+	@objc func keyboardWillShow(sender: NSNotification) {
+		guard let userInfo = sender.userInfo,
+		let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+		let currentTextField = UIResponder.currentFirst() as? UITextField
+		else { return }
+		
+		let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+		let convertedTextField = view.convert(currentTextField.frame, from: currentTextField.superview)
+		let textFieldBottomY = convertedTextField.origin.y + convertedTextField.size.height
+		
+		if textFieldBottomY > keyboardTopY {
+			let textBoxY = convertedTextField.origin.y
+			let newFrameY = (textBoxY - keyboardTopY / 2) * -1
+			view.frame.origin.y = newFrameY
+		}
+	}
+	@objc func keyboardWillHide(sender: NSNotification) {
+		view.frame.origin.y = 0
 	}
 }

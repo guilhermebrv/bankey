@@ -31,19 +31,19 @@ struct AccountSummaryData: Codable {
 	var type: AccountType?
 	var amount: Decimal?
 	var createdDateTime: Date?
-	
+
 	static func makeSkeleton() -> AccountSummaryData {
 		return AccountSummaryData(id: "1", name: "Account name", type: .Banking, amount: 0.0, createdDateTime: Date())
 	}
-	
+
 	var balanceAsAttributtedString: NSAttributedString {
 		return CurrencyFormatter().makeAttributedCurrency(amount ?? 0)
 	}
-	
+
 	var dateFormatted: String {
 		return createdDateTime?.monthDayYearString ?? ""
 	}
-	
+
 	enum AccountType: String, Codable {
 		case Banking
 		case CreditCard
@@ -55,7 +55,7 @@ struct AccountProfileData: Codable {
 	var id: String?
 	var firstName: String?
 	var lastName: String?
-	
+
 	enum CodingKeys: String, CodingKey {
 		case id
 		case firstName = "first_name"

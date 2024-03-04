@@ -12,6 +12,7 @@
 		2B2355DF2B754A0700AC9356 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2355DE2B754A0700AC9356 /* MainViewController.swift */; };
 		2B241F712B7BBC7400C0C58A /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B241F702B7BBC7400C0C58A /* ShakeyBellView.swift */; };
 		2B241F732B7BE05E00C0C58A /* AccountSummaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B241F722B7BE05E00C0C58A /* AccountSummaryDataManager.swift */; };
+		2B2E46962B934EF300986297 /* Extension + UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2E46952B934EF300986297 /* Extension + UIResponder.swift */; };
 		2B52A3C32B863072007CD60E /* PasswordCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52A3C22B863072007CD60E /* PasswordCriteria.swift */; };
 		2B564CD62B77C97D00382A2E /* AccountSummaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B564CD52B77C97D00382A2E /* AccountSummaryData.swift */; };
 		2B564CD82B77CAEF00382A2E /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B564CD72B77CAEF00382A2E /* CurrencyFormatter.swift */; };
@@ -49,6 +50,7 @@
 		2BC02B5B2B7240D400D0B61E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BC02B592B7240D400D0B61E /* LaunchScreen.storyboard */; };
 		2BC02B662B7246CC00D0B61E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC02B652B7246CC00D0B61E /* LoginView.swift */; };
 		2BD03BF22B7FAF1C0057C299 /* AccountSummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD03BF12B7FAF1C0057C299 /* AccountSummaryViewControllerTests.swift */; };
+		2BDDBAE92B9611630075B553 /* PasswordCriteriatests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDDBAE82B9611630075B553 /* PasswordCriteriatests.swift */; };
 		2BF76AE52B7F6FA500C44BEB /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF76AE42B7F6FA500C44BEB /* ErrorAlert.swift */; };
 		2BF9CAD42B827BFD00314D2D /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9CAD32B827BFD00314D2D /* ResetPasswordView.swift */; };
 		2BF9CADA2B827C2C00314D2D /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9CAD92B827C2C00314D2D /* ResetPasswordViewController.swift */; };
@@ -71,6 +73,7 @@
 		2B2355DE2B754A0700AC9356 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2B241F702B7BBC7400C0C58A /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		2B241F722B7BE05E00C0C58A /* AccountSummaryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryDataManager.swift; sourceTree = "<group>"; };
+		2B2E46952B934EF300986297 /* Extension + UIResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIResponder.swift"; sourceTree = "<group>"; };
 		2B52A3C22B863072007CD60E /* PasswordCriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteria.swift; sourceTree = "<group>"; };
 		2B564CD52B77C97D00382A2E /* AccountSummaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryData.swift; sourceTree = "<group>"; };
 		2B564CD72B77CAEF00382A2E /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 		2BC02B5C2B7240D400D0B61E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BC02B652B7246CC00D0B61E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2BD03BF12B7FAF1C0057C299 /* AccountSummaryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewControllerTests.swift; sourceTree = "<group>"; };
+		2BDDBAE82B9611630075B553 /* PasswordCriteriatests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteriatests.swift; sourceTree = "<group>"; };
 		2BF76AE42B7F6FA500C44BEB /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		2BF9CAD32B827BFD00314D2D /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2BF9CAD92B827C2C00314D2D /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				2B8F2CD42B7CD74A004D68CB /* Extension + Date.swift */,
 				2B8F2CE12B7D2505004D68CB /* SkeletonLoadable.swift */,
 				2B52A3C22B863072007CD60E /* PasswordCriteria.swift */,
+				2B2E46952B934EF300986297 /* Extension + UIResponder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				2B564CE82B77F9C000382A2E /* CurrencyFormatterTest.swift */,
+				2BDDBAE82B9611630075B553 /* PasswordCriteriatests.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -489,6 +495,7 @@
 				2B8F2CE02B7CF0A4004D68CB /* AccountTests.swift in Sources */,
 				2B8F2CDE2B7CEDE2004D68CB /* ProfileTest.swift in Sources */,
 				2BD03BF22B7FAF1C0057C299 /* AccountSummaryViewControllerTests.swift in Sources */,
+				2BDDBAE92B9611630075B553 /* PasswordCriteriatests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +511,7 @@
 				2B2355DF2B754A0700AC9356 /* MainViewController.swift in Sources */,
 				2B57F0062B762FCE008D0F5A /* MoveMoneyViewController.swift in Sources */,
 				2B52A3C32B863072007CD60E /* PasswordCriteria.swift in Sources */,
+				2B2E46962B934EF300986297 /* Extension + UIResponder.swift in Sources */,
 				2B57F0042B762FAB008D0F5A /* AccountSummaryViewController.swift in Sources */,
 				2B241F712B7BBC7400C0C58A /* ShakeyBellView.swift in Sources */,
 				2B88DD102B7A4C390093E5C0 /* NSNotificationName.swift in Sources */,
@@ -734,6 +742,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FH99D278L8;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bankey/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -765,6 +774,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FH99D278L8;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bankey/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

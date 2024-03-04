@@ -34,18 +34,18 @@ class AccountTests: XCTestCase {
 			}
 		]
 		"""
-		 
+
 		let data = json.data(using: .utf8)!
 		let decoder = JSONDecoder()
 		decoder.dateDecodingStrategy = .iso8601
 		let result = try! decoder.decode([AccountSummaryData].self, from: data)
-		
+
 		XCTAssertEqual(result[0].id, "1")
 		XCTAssertEqual(result[0].name, "Basic Savings")
 		XCTAssertEqual(result[0].type, .Banking)
 		XCTAssertEqual(result[0].amount, 100.00)
 		XCTAssertEqual(result[0].createdDateTime?.monthDayYearString, "Jun 21, 2010")
-		
+
 		XCTAssertEqual(result[1].id, "2")
 		XCTAssertEqual(result[1].name, "All-In Chequing")
 		XCTAssertEqual(result[1].type, .Banking)
